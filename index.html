@@ -30,6 +30,7 @@
       --radius-md: 16px;
       --radius-sm: 12px;
       --max: 1240px;
+      --nav-height: 82px;
     }
 
     * {
@@ -195,7 +196,10 @@
     }
 
     .hero {
-      padding-top: 34px;
+      height: calc(100dvh - var(--nav-height));
+      min-height: calc(100dvh - var(--nav-height));
+      max-height: calc(100dvh - var(--nav-height));
+      padding: 10px 0 14px;
     }
 
     .hero-grid,
@@ -220,8 +224,57 @@
     }
 
     .hero-grid {
-      grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+      grid-template-columns: minmax(0, 68fr) minmax(280px, 32fr);
       align-items: stretch;
+      gap: 16px;
+      height: 100%;
+    }
+
+    .hero-grid > * {
+      min-height: 0;
+    }
+
+    .hero-main {
+      display: grid;
+      grid-template-rows: minmax(0, 7fr) minmax(0, 3fr);
+      gap: 12px;
+      min-height: 0;
+      height: 100%;
+    }
+
+    .hero-main-top,
+    .hero-main-bottom {
+      min-height: 0;
+    }
+
+    .hero-main-top {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow: auto;
+      min-height: 0;
+      padding-right: 4px;
+    }
+
+    .hero-main-bottom {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .hero-subpanel {
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(23, 49, 76, 0.08);
+      box-shadow: 0 8px 22px rgba(18, 38, 63, 0.05);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-subpanel h3 {
+      font-size: 1.08rem;
+      margin-bottom: 8px;
     }
 
     .layout-2,
@@ -282,7 +335,11 @@
     .hero-copy {
       position: relative;
       overflow: hidden;
-      padding: 34px;
+      padding: 24px;
+      background: rgba(255, 253, 248, 0.72);
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 14px 34px rgba(18, 38, 63, 0.06);
+      backdrop-filter: blur(14px);
     }
 
     .hero-copy::after {
@@ -301,7 +358,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 16px;
+      margin-bottom: 4px;
       padding: 8px 14px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.82);
@@ -327,9 +384,9 @@
     }
 
     h1 {
-      font-size: clamp(2.6rem, 5vw, 4.7rem);
+      font-size: clamp(2.1rem, 4.6vw, 5rem);
       line-height: 0.98;
-      margin-bottom: 14px;
+      margin-bottom: 4px;
       color: var(--brand-strong);
     }
 
@@ -350,11 +407,12 @@
     }
 
     .hero-subtitle {
-      max-width: 24ch;
-      font-size: clamp(1.16rem, 2vw, 1.48rem);
+      max-width: 42ch;
+      font-size: clamp(1rem, 1.55vw, 1.28rem);
       line-height: 1.28;
       color: var(--ink);
-      margin-bottom: 16px;
+      margin-bottom: 0;
+      font-weight: 700;
     }
 
     .lede,
@@ -370,7 +428,7 @@
 
     .lede {
       max-width: 68ch;
-      font-size: 1.02rem;
+      font-size: 0.98rem;
     }
 
     .hero-actions,
@@ -383,7 +441,241 @@
     }
 
     .hero-actions {
-      margin-top: 24px;
+      margin-top: 6px;
+    }
+
+    .hero-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .hero-feature-card {
+      padding: 10px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(23, 49, 76, 0.08);
+      box-shadow: 0 10px 24px rgba(18, 38, 63, 0.05);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-feature-card strong {
+      display: block;
+      font-size: 0.88rem;
+      line-height: 1.2;
+      margin-bottom: 4px;
+      color: var(--ink);
+    }
+
+    .hero-feature-card p {
+      color: var(--ink-soft);
+      font-size: 0.8rem;
+      line-height: 1.36;
+    }
+
+    .hero-scroll-hint {
+      margin-top: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      opacity: 0.88;
+      transition: 0.2s ease;
+      animation: scrollHintPulse 1.8s ease-in-out infinite;
+    }
+
+    .hero-scroll-hint:hover {
+      color: var(--ink);
+      opacity: 1;
+    }
+
+    .hero-scroll-icon {
+      font-size: 1.14rem;
+      line-height: 1;
+    }
+
+    .hero-support {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-content: start;
+      min-height: 0;
+      height: 100%;
+    }
+
+    .hero-support-card {
+      padding: 12px;
+      background: rgba(255, 253, 248, 0.64);
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(18, 38, 63, 0.05);
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .hero-poster-card {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 10px;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .hero-poster-head {
+      font-size: 0.96rem;
+      line-height: 1.2;
+      color: var(--ink);
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .hero-support-card h3 {
+      font-size: 1.16rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-support-card .mini-note {
+      font-size: 0.88rem;
+    }
+
+    .hero-poster-card .poster-frame {
+      margin-top: 0;
+      aspect-ratio: auto;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.92);
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .hero-poster-card .poster-frame img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      object-position: center top;
+    }
+
+    .hero-panel-action {
+      margin-top: 0;
+      width: 100%;
+      min-height: 44px;
+    }
+
+    @media (max-height: 760px) {
+      .hero-poster-head {
+        font-size: 0.88rem;
+      }
+
+      .hero-panel-action {
+        min-height: 40px;
+      }
+    }
+
+    @media (max-height: 860px) {
+      .hero-main {
+        grid-template-rows: auto auto;
+        overflow: auto;
+        padding-right: 4px;
+      }
+
+      .hero-main-top {
+        overflow: visible;
+        padding-right: 0;
+      }
+    }
+
+    .hero-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .hero-metric {
+      padding: 10px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(23, 49, 76, 0.08);
+    }
+
+    .hero-metric strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.1rem;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    .hero-metric span {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.76rem;
+      line-height: 1.3;
+      color: var(--ink-soft);
+    }
+
+    .hero-tech-list {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .hero-tech-inline {
+      margin-top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+
+    .hero-tech-kicker {
+      color: var(--ink-soft);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .hero-tech-inline .hero-tech-list {
+      margin-top: 0;
+      gap: 6px;
+    }
+
+    .hero-tech-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(23, 49, 76, 0.08);
+      background: rgba(255, 255, 255, 0.5);
+      color: var(--ink-soft);
+      font-size: 0.74rem;
+      font-weight: 600;
+    }
+
+    @media (max-height: 860px) {
+      .hero-scroll-hint {
+        display: none;
+      }
+    }
+
+    @keyframes scrollHintPulse {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(3px);
+      }
     }
 
     .btn {
@@ -828,7 +1120,56 @@
     }
 
     @media (max-width: 1120px) {
-      .hero-grid,
+      .hero-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .hero-copy {
+        padding: 22px;
+      }
+
+      .hero {
+        height: auto;
+        min-height: calc(100dvh - var(--nav-height));
+        max-height: none;
+      }
+
+      .hero-feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-main {
+        grid-template-rows: auto auto;
+        height: auto;
+      }
+
+      .hero-main-top {
+        overflow: visible;
+        padding-right: 0;
+      }
+
+      .hero-main-bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-support {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .hero-poster-card {
+        grid-template-rows: auto auto;
+      }
+
+      .hero-metrics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-panel-action {
+        width: auto;
+      }
+
       .layout-2,
       .journey-grid,
       .implementation-grid,
@@ -864,6 +1205,35 @@
       .panel,
       .figure-card {
         padding: 20px;
+      }
+
+      .hero-copy {
+        padding: 18px;
+      }
+
+      .hero-feature-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-main-bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-support {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-metrics-grid {
+        grid-template-columns: 1fr;
       }
 
       .hero-grid,
@@ -949,122 +1319,120 @@
   <main id="top">
     <section class="hero">
       <div class="shell hero-grid">
-        <article class="card hero-copy">
-          <div class="eyebrow">
-            <span class="lang-en">CPT208 Human-Centric Computing | Social Connectivity Track</span>
-            <span class="lang-zh">CPT208 Human-Centric Computing | Social Connectivity 赛道</span>
-          </div>
-          <h1>Campus Compass</h1>
-          <p class="hero-subtitle">
-            <span class="lang-en">A Human-Centred Campus Tour and Navigation Web App for XJTLU Students and Visitors</span>
-            <span class="lang-zh">一款面向西浦学生与访客、以人为中心的校园导览与导航 Web 应用</span>
-          </p>
-          <p class="lede">
-            <span class="lang-en">
-              This process portfolio documents how we turned campus navigation into a guided onboarding experience
-              through iterative research, route alternatives, live prototyping, and early evaluation. The page is aligned
-              with the coursework rubric and cross-checks poster claims against the implemented React + Node.js system in this workspace.
-            </span>
-            <span class="lang-zh">
-              本过程作品集记录了我们如何通过迭代研究、路线方案比较、在线高保真原型和早期评估，把“校园导航”转化为“校园入门引导体验”。
-              页面内容严格对齐课程 rubric，并将海报中的结论与当前工作区中的 React + Node.js 实现进行交叉验证。
-            </span>
-          </p>
+        <article class="card hero-copy hero-main">
+          <div class="hero-main-top">
+            <div class="eyebrow">
+              <span class="lang-en">CPT208 Human-Centric Computing | Social Connectivity Track</span>
+              <span class="lang-zh">CPT208 Human-Centric Computing | Social Connectivity 赛道</span>
+            </div>
+            <h1>Campus Compass</h1>
+            <p class="hero-subtitle">
+              <span class="lang-en">From "Where am I going?"<br>to "I know exactly how to start".</span>
+              <span class="lang-zh">从“我该去哪里？”<br>到“我知道怎么开始”。</span>
+            </p>
+            <p class="lede">
+              <span class="lang-en">
+                A human-centred campus onboarding web app for XJTLU students and visitors.<br>
+                It blends practical route guidance, key campus services, and reflective memory
+                so users can move with confidence instead of guesswork.
+              </span>
+              <span class="lang-zh">
+                一款面向西浦学生与访客、以人为中心的校园 onboarding Web 应用。<br>
+                通过路线引导、校园服务整合与记忆沉淀，让用户从迷茫走向自信。
+              </span>
+            </p>
 
-          <div class="proof-row" aria-label="Evidence legend / 证据图例">
-            <span class="proof proof-code">
-              <span class="lang-en">Repo-backed evidence</span>
-              <span class="lang-zh">代码仓库可验证证据</span>
-            </span>
-            <span class="proof proof-poster">
-              <span class="lang-en">Poster-derived summary</span>
-              <span class="lang-zh">海报归纳数据</span>
-            </span>
-            <span class="proof proof-missing">
-              <span class="lang-en">External raw artifact to attach</span>
-              <span class="lang-zh">需补充的外部原始材料</span>
-            </span>
+            <div class="hero-feature-grid" aria-label="Feature highlights / 功能亮点">
+              <article class="hero-feature-card">
+                <strong><span class="lang-en">Personalized Route Match</span><span class="lang-zh">个性化路线推荐</span></strong>
+                <p><span class="lang-en">Guided route entry based on identity, goals, and time.</span><span class="lang-zh">基于身份、目标和时长生成更合适的路线入口。</span></p>
+              </article>
+              <article class="hero-feature-card">
+                <strong><span class="lang-en">Practical Campus Toolkit</span><span class="lang-zh">实用校园工具</span></strong>
+                <p><span class="lang-en">Buildings, service hubs, and printer access in one flow.</span><span class="lang-zh">教学楼、服务中心与打印资源一站式整合。</span></p>
+              </article>
+              <article class="hero-feature-card">
+                <strong><span class="lang-en">Progress &amp; Completion Feedback</span><span class="lang-zh">进度与完成反馈</span></strong>
+                <p><span class="lang-en">Track stops clearly and finish with confidence.</span><span class="lang-zh">清晰追踪每一步，并用完成反馈强化信心。</span></p>
+              </article>
+              <article class="hero-feature-card">
+                <strong><span class="lang-en">Campus Memory</span><span class="lang-zh">Campus Memory</span></strong>
+                <p><span class="lang-en">Turn navigation moments into memorable campus stories.</span><span class="lang-zh">把导航过程沉淀为可分享、可回顾的校园记忆。</span></p>
+              </article>
+            </div>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#motivation">
+                <span class="lang-en">Read the process</span>
+                <span class="lang-zh">查看全过程</span>
+              </a>
+              <a class="btn btn-secondary" href="https://www.figma.com/design/TXMhLNCqUL2LQQhf7eFf0I/Campus-Tour-Demo?node-id=0-1&amp;t=IYFHVDs4P2vzzEOt-1" target="_blank" rel="noreferrer">
+                <span class="lang-en">Try System Demo</span>
+                <span class="lang-zh">体验系统 Demo</span>
+              </a>
+            </div>
           </div>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#motivation">
-              <span class="lang-en">Read the process</span>
-              <span class="lang-zh">查看全过程</span>
-            </a>
-            <a class="btn btn-secondary" href="./cpt208%20poster%20(2).pdf" target="_blank" rel="noreferrer">
-              <span class="lang-en">Open poster PDF</span>
-              <span class="lang-zh">打开海报 PDF</span>
-            </a>
+          <div class="hero-main-bottom">
+            <article class="hero-subpanel" aria-label="Key Metrics / 关键数据">
+              <h3>
+                <span class="lang-en">Key Metrics (Alpha)</span>
+                <span class="lang-zh">关键数据（Alpha 阶段）</span>
+              </h3>
+              <div class="hero-metrics-grid">
+                <div class="hero-metric">
+                  <strong>n = 94</strong>
+                  <span><span class="lang-en">Requirement survey valid samples</span><span class="lang-zh">需求调研有效样本</span></span>
+                </div>
+                <div class="hero-metric">
+                  <strong>n = 21</strong>
+                  <span><span class="lang-en">Alpha route-entry submissions</span><span class="lang-zh">路线入口提交数</span></span>
+                </div>
+                <div class="hero-metric">
+                  <strong>6</strong>
+                  <span><span class="lang-en">Core routes across three user modes</span><span class="lang-zh">覆盖三类用户的核心路线</span></span>
+                </div>
+                <div class="hero-metric">
+                  <strong>3</strong>
+                  <span><span class="lang-en">User groups actively supported</span><span class="lang-zh">系统支持的主要用户群体</span></span>
+                </div>
+              </div>
+            </article>
           </div>
         </article>
 
-        <div class="layout-2">
-          <article class="card poster-card">
-            <div class="poster-meta">
-              <div>
-                <strong>
-                  <span class="lang-en">Poster Snapshot</span>
-                  <span class="lang-zh">海报预览</span>
-                </strong>
-                <p class="meta-kicker">
-                  <span class="lang-en">The current poster provides the main quantitative summaries reused below.</span>
-                  <span class="lang-zh">当前海报提供了下文复用的主要量化结论。</span>
-                </p>
-              </div>
-              <span class="proof proof-poster">
-                <span class="lang-en">Poster source</span>
-                <span class="lang-zh">海报来源</span>
-              </span>
-            </div>
+        <aside class="hero-support" aria-label="Supporting panel / 支撑信息面板">
+          <article class="hero-support-card hero-poster-card">
+            <p class="hero-poster-head">
+              <span class="lang-en">Poster Snapshot</span>
+              <span class="lang-zh">海报预览</span>
+            </p>
             <div class="poster-frame">
               <img src="./assets/poster-preview.png" alt="Campus Compass poster preview / Campus Compass 海报预览" />
             </div>
+            <a class="btn btn-secondary hero-panel-action" href="./cpt208%20poster%20(2).pdf" target="_blank" rel="noreferrer">
+              <span class="lang-en">View Poster PDF</span>
+              <span class="lang-zh">查看海报 PDF</span>
+            </a>
           </article>
 
-          <article class="card facts-card">
-            <strong>
-              <span class="lang-en">Portfolio at a glance</span>
-              <span class="lang-zh">页面概览</span>
-            </strong>
-            <div class="stats-grid">
-              <div class="stat">
-                <strong>6</strong>
-                <span>
-                  <span class="lang-en">Core routes across freshman, student, and visitor modes</span>
-                  <span class="lang-zh">覆盖新生、在校生、访客三类模式的 6 条核心路线</span>
-                </span>
+          <article class="hero-support-card" aria-label="Tech stack summary / 技术栈概览">
+            <h3>
+              <span class="lang-en">Tech Stack</span>
+              <span class="lang-zh">技术栈</span>
+            </h3>
+            <div class="hero-tech-inline">
+              <div class="hero-tech-list">
+                <span class="hero-tech-pill">React + Vite</span>
+                <span class="hero-tech-pill">Node.js API</span>
+                <span class="hero-tech-pill">AMap</span>
+                <span class="hero-tech-pill">Campus Memory</span>
+                <span class="hero-tech-pill">DeepSeek</span>
               </div>
-              <div class="stat">
-                <strong>3</strong>
-                <span>
-                  <span class="lang-en">Primary user groups supported by the live app</span>
-                  <span class="lang-zh">系统支持的 3 类主要用户群体</span>
-                </span>
-              </div>
-              <div class="stat">
-                <strong>n = 94</strong>
-                <span>
-                  <span class="lang-en">First-year questionnaire respondents reported in the poster</span>
-                  <span class="lang-zh">海报中汇总的有效新生问卷样本量</span>
-                </span>
-              </div>
-              <div class="stat">
-                <strong>n = 21</strong>
-                <span>
-                  <span class="lang-en">Alpha route-entry submissions summarised in the poster</span>
-                  <span class="lang-zh">海报中归纳的 Alpha 阶段路线入口提交数</span>
-                </span>
-              </div>
-            </div>
-            <div class="chips">
-              <span class="chip">React + Vite</span>
-              <span class="chip">Node.js API</span>
-              <span class="chip">AMap</span>
-              <span class="chip">Campus Memory</span>
-              <span class="chip">DeepSeek</span>
             </div>
           </article>
-        </div>
+
+        </aside>
       </div>
     </section>
 
@@ -2315,6 +2683,7 @@
             : 'Campus Compass CPT208 process portfolio with bilingual English-Chinese content covering motivation, requirements, ideation, implementation, evaluation, and reflection.'
         );
       }
+      requestAnimationFrame(syncHeroViewportHeight);
     }
 
     langButtons.forEach((button) => {
@@ -2323,7 +2692,18 @@
       });
     });
 
+    const siteHeader = document.querySelector('.site-header');
+
+    function syncHeroViewportHeight() {
+      const navHeight = siteHeader ? Math.ceil(siteHeader.getBoundingClientRect().height) : 82;
+      document.documentElement.style.setProperty('--nav-height', `${navHeight}px`);
+    }
+
+    window.addEventListener('resize', syncHeroViewportHeight);
+    window.addEventListener('orientationchange', syncHeroViewportHeight);
+
     setLanguage(initialLang);
+    requestAnimationFrame(syncHeroViewportHeight);
 
     const observer = new IntersectionObserver(
       (entries) => {
