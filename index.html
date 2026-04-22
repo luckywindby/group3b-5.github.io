@@ -30,6 +30,8 @@
       --radius-md: 16px;
       --radius-sm: 12px;
       --max: 1240px;
+      --shadow-hover: 0 28px 60px rgba(18, 38, 63, 0.16);
+      --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     * {
@@ -45,10 +47,42 @@
       color: var(--ink);
       font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
       line-height: 1.65;
+      position: relative;
+      overflow-x: hidden;
+      isolation: isolate;
       background:
         radial-gradient(circle at 0% 0%, rgba(223, 163, 67, 0.16), transparent 28%),
         radial-gradient(circle at 100% 0%, rgba(32, 90, 152, 0.12), transparent 24%),
         linear-gradient(180deg, #f5efe5 0%, #fbf8f3 30%, #f5f8fc 100%);
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(18px);
+      opacity: 0.72;
+    }
+
+    body::before {
+      top: 10vh;
+      left: -130px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(223, 163, 67, 0.24), rgba(223, 163, 67, 0));
+      animation: drift 16s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      top: 34vh;
+      right: -150px;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(32, 90, 152, 0.18), rgba(32, 90, 152, 0));
+      animation: drift 20s ease-in-out infinite alternate-reverse;
     }
 
     body[data-lang="en"] .lang-zh {
@@ -57,6 +91,12 @@
 
     body[data-lang="zh"] .lang-en {
       display: none;
+    }
+
+    main,
+    .footer {
+      position: relative;
+      z-index: 1;
     }
 
     a {
@@ -97,7 +137,13 @@
       padding: 0 14px;
       border-radius: 999px;
       cursor: pointer;
-      transition: 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform 0.26s var(--ease-smooth),
+        color 0.26s var(--ease-smooth),
+        background-color 0.26s var(--ease-smooth),
+        box-shadow 0.26s var(--ease-smooth);
     }
 
     .lang-switcher button.is-active {
@@ -138,6 +184,23 @@
       background: linear-gradient(135deg, #255b97, #1985a4);
       box-shadow: var(--shadow);
       flex: 0 0 auto;
+      position: relative;
+      animation: bob 6.8s ease-in-out infinite;
+    }
+
+    .brand-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+    }
+
+    .brand-icon::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.32), transparent 58%);
+      pointer-events: none;
     }
 
     .brand-copy strong {
@@ -174,7 +237,27 @@
       border-radius: 999px;
       color: var(--ink-soft);
       font-size: 0.92rem;
-      transition: 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform 0.28s var(--ease-smooth),
+        box-shadow 0.28s var(--ease-smooth),
+        background-color 0.28s var(--ease-smooth),
+        color 0.28s var(--ease-smooth);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 8px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--brand));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.28s var(--ease-smooth);
     }
 
     .nav-links a:hover,
@@ -183,6 +266,11 @@
       color: var(--ink);
       box-shadow: 0 8px 18px rgba(23, 49, 76, 0.08);
       transform: translateY(-1px);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.is-active::after {
+      transform: scaleX(1);
     }
 
     main {
@@ -196,6 +284,22 @@
 
     .hero {
       padding-top: 34px;
+      position: relative;
+      overflow: clip;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 28px;
+      right: 7%;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(27, 133, 166, 0.14), rgba(27, 133, 166, 0));
+      pointer-events: none;
+      animation: drift 14s ease-in-out infinite alternate;
+      z-index: 0;
     }
 
     .hero-grid,
@@ -222,6 +326,10 @@
     .hero-grid {
       grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
       align-items: stretch;
+    }
+
+    .hero-side-grid {
+      align-content: start;
     }
 
     .layout-2,
@@ -272,6 +380,37 @@
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform 0.36s var(--ease-smooth),
+        box-shadow 0.36s var(--ease-smooth),
+        border-color 0.36s var(--ease-smooth),
+        background-color 0.36s var(--ease-smooth);
+      will-change: transform;
+    }
+
+    .card::before,
+    .panel::before,
+    .figure-card::before,
+    .gallery-card::before,
+    .crazy-tile::before,
+    .comparison-card::before,
+    .feature-card::before,
+    .arch-node::before,
+    .metric::before,
+    .task::before,
+    .requirement-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0) 18%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 82%);
+      transform: translateX(-130%);
+      opacity: 0;
+      transition:
+        transform 0.9s var(--ease-smooth),
+        opacity 0.4s var(--ease-smooth);
+      pointer-events: none;
     }
 
     .card,
@@ -283,6 +422,7 @@
       position: relative;
       overflow: hidden;
       padding: 34px;
+      animation: hero-rise 0.8s var(--ease-smooth) both;
     }
 
     .hero-copy::after {
@@ -309,6 +449,7 @@
       color: var(--ink-soft);
       font-size: 0.9rem;
       font-weight: 600;
+      animation: pulse-soft 5.6s ease-in-out infinite;
     }
 
     h1,
@@ -395,11 +536,30 @@
       border-radius: 999px;
       border: 1px solid transparent;
       font-weight: 700;
-      transition: 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform 0.28s var(--ease-smooth),
+        box-shadow 0.28s var(--ease-smooth),
+        border-color 0.28s var(--ease-smooth);
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0) 16%, rgba(255, 255, 255, 0.34) 50%, rgba(255, 255, 255, 0) 84%);
+      transform: translateX(-120%);
+      transition: transform 0.78s var(--ease-smooth);
+      pointer-events: none;
     }
 
     .btn:hover {
-      transform: translateY(-1px);
+      transform: translateY(-3px);
+    }
+
+    .btn:hover::after {
+      transform: translateX(120%);
     }
 
     .btn-primary {
@@ -419,12 +579,130 @@
       padding: 18px;
     }
 
+    .hero-particle-card {
+      grid-column: 1 / -1;
+      padding: 18px;
+      min-height: 380px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(223, 163, 67, 0.18), transparent 34%),
+        linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(244, 248, 255, 0.92));
+      animation: hero-rise 0.92s var(--ease-smooth) 0.1s both;
+    }
+
+    .poster-card {
+      animation: hero-rise 0.9s var(--ease-smooth) 0.18s both;
+    }
+
+    .facts-card {
+      animation: hero-rise 0.9s var(--ease-smooth) 0.28s both;
+    }
+
+    .hero-visual-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .hero-visual-meta strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.18rem;
+      color: var(--ink);
+    }
+
+    .hero-particle-stage {
+      position: relative;
+      min-height: clamp(280px, 34vw, 360px);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(223, 163, 67, 0.14), transparent 30%),
+        radial-gradient(circle at 80% 16%, rgba(32, 90, 152, 0.16), transparent 24%),
+        linear-gradient(180deg, #0d1725 0%, #102236 44%, #13304c 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 22px 48px rgba(16, 31, 49, 0.18);
+    }
+
+    .hero-particle-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.72), transparent 100%);
+      pointer-events: none;
+      opacity: 0.38;
+    }
+
+    .hero-particle-stage::after {
+      content: "";
+      position: absolute;
+      left: -40px;
+      bottom: -70px;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(223, 163, 67, 0.2), rgba(223, 163, 67, 0));
+      filter: blur(6px);
+      pointer-events: none;
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+
+    .hero-particle-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+
+    .hero-particle-source {
+      position: absolute;
+      inset: 18px;
+      width: calc(100% - 36px);
+      height: calc(100% - 36px);
+      object-fit: contain;
+      opacity: 0.92;
+      filter: drop-shadow(0 14px 28px rgba(223, 163, 67, 0.18));
+      pointer-events: none;
+    }
+
+    .hero-particle-stage.is-live .hero-particle-canvas {
+      display: block;
+    }
+
+    .hero-particle-stage.is-live .hero-particle-source {
+      opacity: 0;
+      filter: none;
+    }
+
+    .hero-particle-stage.is-static .hero-particle-canvas {
+      display: none;
+    }
+
     .poster-frame,
     .ref-image {
       overflow: hidden;
       border-radius: 18px;
       border: 1px solid rgba(23, 49, 76, 0.08);
       background: white;
+      transition:
+        transform 0.36s var(--ease-smooth),
+        box-shadow 0.36s var(--ease-smooth);
+    }
+
+    .poster-frame img,
+    .ref-image img,
+    .gallery-card img {
+      transition:
+        transform 0.8s var(--ease-smooth),
+        filter 0.8s var(--ease-smooth);
     }
 
     .poster-meta {
@@ -827,6 +1105,136 @@
       box-shadow: var(--shadow);
     }
 
+    .reveal {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0) scale(0.985);
+      filter: blur(10px);
+      transition:
+        opacity 0.72s var(--ease-smooth),
+        transform 0.72s var(--ease-smooth),
+        filter 0.72s var(--ease-smooth);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0);
+    }
+
+    @keyframes drift {
+      from {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      to {
+        transform: translate3d(28px, -18px, 0) scale(1.08);
+      }
+    }
+
+    @keyframes bob {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes pulse-soft {
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(223, 163, 67, 0);
+      }
+
+      50% {
+        box-shadow: 0 0 0 10px rgba(223, 163, 67, 0.08);
+      }
+    }
+
+    @keyframes hero-rise {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 26px, 0);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .lang-switcher button:hover {
+        transform: translateY(-1px);
+      }
+
+      .card:hover,
+      .panel:hover,
+      .figure-card:hover,
+      .gallery-card:hover,
+      .crazy-tile:hover,
+      .comparison-card:hover,
+      .feature-card:hover,
+      .arch-node:hover,
+      .metric:hover,
+      .task:hover,
+      .requirement-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
+        border-color: rgba(32, 90, 152, 0.18);
+      }
+
+      .card:hover::before,
+      .panel:hover::before,
+      .figure-card:hover::before,
+      .gallery-card:hover::before,
+      .crazy-tile:hover::before,
+      .comparison-card:hover::before,
+      .feature-card:hover::before,
+      .arch-node:hover::before,
+      .metric:hover::before,
+      .task:hover::before,
+      .requirement-card:hover::before {
+        transform: translateX(130%);
+        opacity: 1;
+      }
+
+      .poster-frame:hover,
+      .ref-image:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 38px rgba(18, 38, 63, 0.12);
+      }
+
+      .poster-frame:hover img,
+      .ref-image:hover img,
+      .gallery-card:hover img {
+        transform: scale(1.06);
+        filter: saturate(1.04);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      body::before,
+      body::after {
+        display: none;
+      }
+    }
+
     @media (max-width: 1120px) {
       .hero-grid,
       .layout-2,
@@ -864,6 +1272,18 @@
       .panel,
       .figure-card {
         padding: 20px;
+      }
+
+      .hero-visual-meta {
+        flex-direction: column;
+      }
+
+      .hero-particle-card {
+        min-height: 320px;
+      }
+
+      .hero-particle-stage {
+        min-height: 260px;
       }
 
       .hero-grid,
@@ -998,7 +1418,30 @@
           </div>
         </article>
 
-        <div class="layout-2">
+        <div class="layout-2 hero-side-grid">
+          <article class="card hero-particle-card">
+            <div class="hero-visual-meta">
+              <div>
+                <strong>
+                  <span class="lang-en">Campus Motif in Particles</span>
+                  <span class="lang-zh">校园主题粒子主视觉</span>
+                </strong>
+                <p class="meta-kicker">
+                  <span class="lang-en">The welcome illustration is sampled into drifting points to echo landmarks, routes, and first-time exploration.</span>
+                  <span class="lang-zh">将欢迎页校园插画采样为漂浮粒子，呼应地标、路线与初次探索的体验。</span>
+                </p>
+              </div>
+              <span class="proof proof-code">
+                <span class="lang-en">Live canvas animation</span>
+                <span class="lang-zh">实时 Canvas 动画</span>
+              </span>
+            </div>
+            <div class="hero-particle-stage">
+              <canvas class="hero-particle-canvas" aria-hidden="true"></canvas>
+              <img class="hero-particle-source" src="./assets/welcome-hero.png" alt="" loading="eager" decoding="async" />
+            </div>
+          </article>
+
           <article class="card poster-card">
             <div class="poster-meta">
               <div>
@@ -2284,6 +2727,7 @@
     </div>
   </footer>
 
+  <script src="./assets/welcome-hero-particles.js"></script>
   <script>
     const navLinks = [...document.querySelectorAll('.nav-links a')];
     const sections = navLinks
@@ -2294,6 +2738,11 @@
     const body = document.body;
     const storedLang = localStorage.getItem('campus-compass-portfolio-lang');
     const initialLang = storedLang === 'zh' ? 'zh' : 'en';
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function prefersReducedMotion() {
+      return motionQuery.matches;
+    }
 
     function setLanguage(lang) {
       body.setAttribute('data-lang', lang);
@@ -2325,22 +2774,248 @@
 
     setLanguage(initialLang);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const id = `#${entry.target.id}`;
-          const link = navLinks.find((item) => item.getAttribute('href') === id);
-          if (!link) return;
-          if (entry.isIntersecting) {
-            navLinks.forEach((item) => item.classList.remove('is-active'));
-            link.classList.add('is-active');
-          }
-        });
-      },
-      { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 }
-    );
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const id = `#${entry.target.id}`;
+            const link = navLinks.find((item) => item.getAttribute('href') === id);
+            if (!link) return;
+            if (entry.isIntersecting) {
+              navLinks.forEach((item) => item.classList.remove('is-active'));
+              link.classList.add('is-active');
+            }
+          });
+        },
+        { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 }
+      );
 
-    sections.forEach((section) => observer.observe(section));
+      sections.forEach((section) => observer.observe(section));
+    } else if (navLinks[0]) {
+      navLinks[0].classList.add('is-active');
+    }
+
+    function initRevealAnimations() {
+      const revealTargets = [
+        ...document.querySelectorAll(
+          '.section-head, .panel, .figure-card, .gallery-card, .crazy-tile, .comparison-card, .feature-card, .arch-node, .metric, .task, .requirement-card, .table-wrap, .callout, .footer-card'
+        ),
+      ];
+
+      if (!revealTargets.length) return;
+
+      if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
+        revealTargets.forEach((element) => element.classList.add('is-visible'));
+        return;
+      }
+
+      const revealObserver = new IntersectionObserver(
+        (entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            currentObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+      );
+
+      revealTargets.forEach((element, index) => {
+        const rect = element.getBoundingClientRect();
+        if (rect.top > window.innerHeight * 0.92) {
+          element.classList.add('reveal');
+          element.style.setProperty('--reveal-delay', `${(index % 5) * 70}ms`);
+        } else {
+          element.classList.add('is-visible');
+        }
+
+        revealObserver.observe(element);
+      });
+    }
+
+    function initHeroParticleCanvas() {
+      const stage = document.querySelector('.hero-particle-stage');
+      const canvas = document.querySelector('.hero-particle-canvas');
+      const image = document.querySelector('.hero-particle-source');
+      const particleData = window.WELCOME_HERO_PARTICLE_DATA;
+
+      if (!stage || !canvas || !image) return;
+
+      const context = canvas.getContext('2d');
+
+      if (prefersReducedMotion() || !context || !particleData || !Array.isArray(particleData.points) || !particleData.points.length) {
+        stage.classList.add('is-static');
+        return;
+      }
+
+      let particles = [];
+      let animationFrame = 0;
+      let resizeTimer = 0;
+      let stageWidth = 0;
+      let stageHeight = 0;
+      let time = 0;
+      let running = false;
+
+      const pointer = {
+        x: -9999,
+        y: -9999,
+        active: false,
+      };
+
+      function setCanvasSize() {
+        stageWidth = stage.clientWidth;
+        stageHeight = stage.clientHeight;
+
+        if (!stageWidth || !stageHeight) return;
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.8);
+        canvas.width = Math.floor(stageWidth * dpr);
+        canvas.height = Math.floor(stageHeight * dpr);
+        context.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function buildParticles() {
+        if (!stageWidth || !stageHeight) {
+          stage.classList.add('is-static');
+          stage.classList.remove('is-live');
+          return;
+        }
+
+        const padding = stageWidth < 480 ? 20 : 26;
+        const availableWidth = Math.max(stageWidth - padding * 2, 40);
+        const availableHeight = Math.max(stageHeight - padding * 2, 40);
+        const scale = Math.min(availableWidth / particleData.width, availableHeight / particleData.height);
+        const drawWidth = Math.max(1, particleData.width * scale);
+        const drawHeight = Math.max(1, particleData.height * scale);
+        const offsetX = (stageWidth - drawWidth) / 2;
+        const offsetY = (stageHeight - drawHeight) / 2;
+
+        particles = particleData.points.map((point) => {
+          const [sourceX, sourceY, red, green, blue, opacity, size] = point;
+
+          return {
+            x: Math.random() * stageWidth,
+            y: Math.random() * stageHeight,
+            vx: 0,
+            vy: 0,
+            homeX: offsetX + sourceX * scale,
+            homeY: offsetY + sourceY * scale,
+            size: Math.max(0.95, size * (0.42 + scale * 0.72)),
+            color: `rgba(${Math.min(255, red + 24)}, ${Math.min(255, green + 16)}, ${Math.max(150, blue)}, ${opacity})`,
+            pull: 0.065 + Math.random() * 0.035,
+            phase: Math.random() * Math.PI * 2,
+            drift: 1.6 + Math.random() * 1.4,
+          };
+        });
+
+        if (particles.length) {
+          stage.classList.add('is-live');
+          stage.classList.remove('is-static');
+        } else {
+          stage.classList.add('is-static');
+          stage.classList.remove('is-live');
+        }
+      }
+
+      function drawFrame() {
+        if (!running) return;
+
+        time += 0.016;
+        context.clearRect(0, 0, stageWidth, stageHeight);
+        context.save();
+        context.shadowColor = 'rgba(223, 163, 67, 0.32)';
+        context.shadowBlur = 8;
+
+        particles.forEach((particle) => {
+          const floatX = particle.homeX + Math.cos(time * particle.drift + particle.phase) * 1.8;
+          const floatY = particle.homeY + Math.sin(time * (particle.drift + 0.4) + particle.phase) * 2.4;
+          let ax = (floatX - particle.x) * particle.pull;
+          let ay = (floatY - particle.y) * particle.pull;
+
+          if (pointer.active) {
+            const dx = particle.x - pointer.x;
+            const dy = particle.y - pointer.y;
+            const distance = Math.hypot(dx, dy);
+
+            if (distance < 72) {
+              const force = (1 - distance / 72) * 2.2;
+              ax += (dx / Math.max(distance, 1)) * force;
+              ay += (dy / Math.max(distance, 1)) * force;
+            }
+          }
+
+          particle.vx = (particle.vx + ax) * 0.88;
+          particle.vy = (particle.vy + ay) * 0.88;
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+
+          context.fillStyle = particle.color;
+          context.beginPath();
+          context.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+          context.fill();
+        });
+
+        context.restore();
+        animationFrame = window.requestAnimationFrame(drawFrame);
+      }
+
+      function start() {
+        if (running || !particles.length) return;
+        running = true;
+        animationFrame = window.requestAnimationFrame(drawFrame);
+      }
+
+      function stop() {
+        running = false;
+        window.cancelAnimationFrame(animationFrame);
+      }
+
+      function refreshScene() {
+        setCanvasSize();
+        buildParticles();
+
+        if (particles.length) {
+          start();
+        } else {
+          stop();
+        }
+      }
+
+      function handlePointerMove(event) {
+        const rect = stage.getBoundingClientRect();
+        pointer.x = event.clientX - rect.left;
+        pointer.y = event.clientY - rect.top;
+        pointer.active = pointer.x >= 0 && pointer.y >= 0 && pointer.x <= rect.width && pointer.y <= rect.height;
+      }
+
+      function resetPointer() {
+        pointer.x = -9999;
+        pointer.y = -9999;
+        pointer.active = false;
+      }
+
+      function scheduleRefresh() {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(refreshScene, 120);
+      }
+
+      stage.addEventListener('pointermove', handlePointerMove, { passive: true });
+      stage.addEventListener('pointerdown', handlePointerMove, { passive: true });
+      stage.addEventListener('pointerleave', resetPointer);
+      window.addEventListener('resize', scheduleRefresh);
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          stop();
+        } else {
+          start();
+        }
+      });
+
+      refreshScene();
+    }
+
+    initRevealAnimations();
+    initHeroParticleCanvas();
   </script>
 </body>
 </html>
