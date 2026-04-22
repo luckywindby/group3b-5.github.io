@@ -39,6 +39,8 @@
       --hero-stage-shift: 0px;
       --hero-orb-shift: 0px;
       --hero-glow-shift: 0px;
+      --base-font-size: 16px;
+      --base-line-height: 1.65;
     }
 
     * {
@@ -47,13 +49,14 @@
 
     html {
       scroll-behavior: smooth;
+      font-size: var(--base-font-size);
     }
 
     body {
       margin: 0;
       color: var(--ink);
       font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
-      line-height: 1.65;
+      line-height: var(--base-line-height);
       position: relative;
       overflow-x: hidden;
       isolation: isolate;
@@ -61,6 +64,23 @@
         radial-gradient(circle at 0% 0%, rgba(223, 163, 67, 0.16), transparent 28%),
         radial-gradient(circle at 100% 0%, rgba(32, 90, 152, 0.12), transparent 24%),
         linear-gradient(180deg, #f5efe5 0%, #fbf8f3 30%, #f5f8fc 100%);
+    }
+
+    body[data-access-font="large"] {
+      --base-font-size: 18px;
+      --base-line-height: 1.82;
+    }
+
+    body[data-access-contrast="high"] {
+      --paper: rgba(255, 255, 255, 0.98);
+      --paper-strong: #ffffff;
+      --ink: #0d2238;
+      --ink-soft: #274767;
+      --line: rgba(13, 34, 56, 0.24);
+      --brand: #0e4f93;
+      --brand-strong: #082f57;
+      --accent: #b86d00;
+      --shadow: 0 18px 42px rgba(9, 24, 40, 0.14);
     }
 
     body::before,
@@ -113,6 +133,36 @@
       text-decoration: none;
     }
 
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(32, 90, 152, 0.42);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: 12px;
+      z-index: 120;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--brand-strong);
+      color: white;
+      box-shadow: 0 12px 24px rgba(20, 57, 95, 0.18);
+      transform: translateY(-160%);
+      transition: transform 0.22s var(--ease-smooth);
+    }
+
+    .skip-link:focus-visible {
+      transform: translateY(0);
+    }
+
     img {
       display: block;
       max-width: 100%;
@@ -121,6 +171,219 @@
     .shell {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
+    }
+
+    .accessibility-dock {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      display: grid;
+      gap: 10px;
+      justify-items: end;
+    }
+
+    .access-toggle {
+      appearance: none;
+      border: 0;
+      min-height: 48px;
+      min-width: 48px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(32, 90, 152, 0.98), rgba(26, 137, 169, 0.96));
+      color: white;
+      box-shadow: 0 16px 30px rgba(32, 90, 152, 0.22);
+      cursor: pointer;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .access-panel {
+      width: min(320px, calc(100vw - 24px));
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(23, 49, 76, 0.1);
+      box-shadow: 0 24px 46px rgba(18, 38, 63, 0.14);
+      backdrop-filter: blur(18px);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px) scale(0.98);
+      transition:
+        opacity 0.24s var(--ease-smooth),
+        transform 0.24s var(--ease-smooth),
+        visibility 0.24s var(--ease-smooth);
+    }
+
+    .access-panel.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .access-head {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .access-head strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    .access-head p {
+      margin-top: 4px;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .access-close {
+      appearance: none;
+      border: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: rgba(23, 49, 76, 0.08);
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .access-groups {
+      display: grid;
+      gap: 12px;
+    }
+
+    .access-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    .access-group label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .access-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .access-option {
+      appearance: none;
+      border: 1px solid rgba(23, 49, 76, 0.1);
+      border-radius: 16px;
+      padding: 12px 10px;
+      background: white;
+      color: var(--ink-soft);
+      cursor: pointer;
+      text-align: left;
+      transition:
+        transform 0.2s var(--ease-smooth),
+        border-color 0.2s var(--ease-smooth),
+        box-shadow 0.2s var(--ease-smooth),
+        color 0.2s var(--ease-smooth);
+    }
+
+    .access-option strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--ink);
+    }
+
+    .access-option span {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .access-option.is-active {
+      border-color: rgba(32, 90, 152, 0.26);
+      color: var(--brand-strong);
+      box-shadow: 0 10px 22px rgba(32, 90, 152, 0.12);
+      transform: translateY(-1px);
+      background: linear-gradient(180deg, #eef6ff, #ffffff);
+    }
+
+    body[data-access-motion="reduce"] {
+      scroll-behavior: auto;
+    }
+
+    body[data-access-motion="reduce"]::before,
+    body[data-access-motion="reduce"]::after,
+    body[data-access-motion="reduce"] .hero::before,
+    body[data-access-motion="reduce"] .hero::after,
+    body[data-access-motion="reduce"] .hero-particle-card::before,
+    body[data-access-motion="reduce"] .poster-card::before,
+    body[data-access-motion="reduce"] .facts-card::before,
+    body[data-access-motion="reduce"] .panel::before,
+    body[data-access-motion="reduce"] .figure-card::before,
+    body[data-access-motion="reduce"] .gallery-card::before,
+    body[data-access-motion="reduce"] .crazy-tile::before,
+    body[data-access-motion="reduce"] .comparison-card::before,
+    body[data-access-motion="reduce"] .feature-card::before,
+    body[data-access-motion="reduce"] .arch-node::before,
+    body[data-access-motion="reduce"] .metric::before,
+    body[data-access-motion="reduce"] .task::before,
+    body[data-access-motion="reduce"] .requirement-card::before,
+    body[data-access-motion="reduce"] .callout::before,
+    body[data-access-motion="reduce"] .footer-card::before,
+    body[data-access-motion="reduce"] .stat::before,
+    body[data-access-motion="reduce"] .scroll-progress-bar::after,
+    body[data-access-motion="reduce"] .nav-route-core::after,
+    body[data-access-motion="reduce"] .press-ripple {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+    }
+
+    body[data-access-motion="reduce"] .reveal,
+    body[data-access-motion="reduce"] .section-head,
+    body[data-access-motion="reduce"] .hero-particle-card,
+    body[data-access-motion="reduce"] .poster-card,
+    body[data-access-motion="reduce"] .facts-card,
+    body[data-access-motion="reduce"] .panel,
+    body[data-access-motion="reduce"] .figure-card,
+    body[data-access-motion="reduce"] .gallery-card,
+    body[data-access-motion="reduce"] .crazy-tile,
+    body[data-access-motion="reduce"] .comparison-card,
+    body[data-access-motion="reduce"] .feature-card,
+    body[data-access-motion="reduce"] .arch-node,
+    body[data-access-motion="reduce"] .metric,
+    body[data-access-motion="reduce"] .task,
+    body[data-access-motion="reduce"] .requirement-card,
+    body[data-access-motion="reduce"] .table-wrap,
+    body[data-access-motion="reduce"] .callout,
+    body[data-access-motion="reduce"] .footer-card,
+    body[data-access-motion="reduce"] .poster-frame,
+    body[data-access-motion="reduce"] .ref-image,
+    body[data-access-motion="reduce"] .stat,
+    body[data-access-motion="reduce"] .proof-row,
+    body[data-access-motion="reduce"] .btn,
+    body[data-access-motion="reduce"] .lang-switcher button,
+    body[data-access-motion="reduce"] .nav-route-indicator {
+      transition: none !important;
+      animation: none !important;
+      filter: none;
+    }
+
+    body[data-access-motion="reduce"] .hero-particle-stage.is-live .hero-particle-canvas,
+    body[data-access-motion="reduce"] .hero-particle-canvas {
+      display: none !important;
+    }
+
+    body[data-access-motion="reduce"] .hero-particle-stage.is-live .hero-particle-source,
+    body[data-access-motion="reduce"] .hero-particle-source {
+      opacity: 0.98 !important;
+      filter: none !important;
     }
 
     .lang-switcher {
@@ -1710,9 +1973,132 @@
         min-width: 640px;
       }
     }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
+      .site-header {
+        top: 0;
+      }
+
+      .nav-links {
+        gap: 8px;
+        padding-bottom: 10px;
+        overflow-x: auto;
+        scrollbar-width: thin;
+      }
+
+      .nav-links a {
+        white-space: nowrap;
+      }
+
+      .hero {
+        padding-top: 112px;
+      }
+
+      .hero-copy,
+      .card,
+      .panel,
+      .figure-card,
+      .poster-card,
+      .facts-card,
+      .gallery-card,
+      .footer-card,
+      .table-wrap {
+        padding: 18px;
+        border-radius: 20px;
+      }
+
+      .hero-particle-card {
+        min-height: 280px;
+      }
+
+      .hero-particle-stage {
+        min-height: 220px;
+      }
+
+      .hero-visual-meta,
+      .proof-row,
+      .button-row {
+        gap: 10px;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      table {
+        min-width: 560px;
+      }
+
+      .scroll-progress {
+        bottom: -1px;
+      }
+
+      .accessibility-dock {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        justify-items: stretch;
+      }
+
+      .access-toggle {
+        justify-self: end;
+      }
+
+      .access-panel {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .access-options {
+        grid-template-columns: 1fr;
+      }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .brand-copy strong {
+        font-size: 1rem;
+      }
+
+      .brand-copy small {
+        font-size: 0.74rem;
+      }
+
+      .hero {
+        padding-top: 104px;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2rem, 10vw, 2.6rem);
+      }
+
+      .hero-subtitle,
+      .lede {
+        font-size: 0.98rem;
+      }
+
+      .hero-particle-stage {
+        min-height: 196px;
+      }
+
+      table {
+        min-width: 500px;
+      }
+    }
   </style>
 </head>
 <body data-lang="en">
+  <a class="skip-link" href="#top">
+    <span class="lang-en">Skip to main content</span>
+    <span class="lang-zh">跳到主要内容</span>
+  </a>
   <header class="site-header">
     <div class="shell nav-row">
       <a class="brand" href="#top">
@@ -1752,6 +2138,9 @@
             <span class="lang-en">Reflection</span>
             <span class="lang-zh">反思</span>
           </a>
+          <span class="nav-route-indicator" aria-hidden="true">
+            <span class="nav-route-core"></span>
+          </span>
         </nav>
 
         <div class="lang-switcher" aria-label="Language switcher / 语言切换">
@@ -3115,6 +3504,123 @@
     </section>
   </main>
 
+  <div class="accessibility-dock">
+    <button
+      class="access-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="accessibility-panel"
+    >
+      <span class="lang-en">Accessibility</span>
+      <span class="lang-zh">无障碍</span>
+    </button>
+
+    <section class="access-panel" id="accessibility-panel" aria-label="Accessibility settings">
+      <div class="access-head">
+        <div>
+          <strong>
+            <span class="lang-en">Accessibility</span>
+            <span class="lang-zh">无障碍设置</span>
+          </strong>
+          <p>
+            <span class="lang-en">Adjust readability, contrast, and motion for desktop and mobile viewing.</span>
+            <span class="lang-zh">调整字号、对比度和动态效果，让网页端与手机端都更易读。</span>
+          </p>
+        </div>
+        <button class="access-close" type="button" aria-label="Close accessibility settings">×</button>
+      </div>
+
+      <div class="access-groups">
+        <div class="access-group">
+          <label>
+            <span class="lang-en">Text size</span>
+            <span class="lang-zh">文字大小</span>
+          </label>
+          <div class="access-options" role="group" aria-label="Text size">
+            <button class="access-option" type="button" data-access-setting="font" data-access-value="default">
+              <strong>
+                <span class="lang-en">Default</span>
+                <span class="lang-zh">默认</span>
+              </strong>
+              <span>
+                <span class="lang-en">Balanced reading size</span>
+                <span class="lang-zh">常规阅读字号</span>
+              </span>
+            </button>
+            <button class="access-option" type="button" data-access-setting="font" data-access-value="large">
+              <strong>
+                <span class="lang-en">Large</span>
+                <span class="lang-zh">放大</span>
+              </strong>
+              <span>
+                <span class="lang-en">Larger text and spacing</span>
+                <span class="lang-zh">更大的文字与行距</span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="access-group">
+          <label>
+            <span class="lang-en">Contrast</span>
+            <span class="lang-zh">对比度</span>
+          </label>
+          <div class="access-options" role="group" aria-label="Contrast">
+            <button class="access-option" type="button" data-access-setting="contrast" data-access-value="default">
+              <strong>
+                <span class="lang-en">Standard</span>
+                <span class="lang-zh">标准</span>
+              </strong>
+              <span>
+                <span class="lang-en">Keep the current visual style</span>
+                <span class="lang-zh">保持当前页面风格</span>
+              </span>
+            </button>
+            <button class="access-option" type="button" data-access-setting="contrast" data-access-value="high">
+              <strong>
+                <span class="lang-en">High</span>
+                <span class="lang-zh">高对比</span>
+              </strong>
+              <span>
+                <span class="lang-en">Stronger text and border contrast</span>
+                <span class="lang-zh">增强文字与边框对比</span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="access-group">
+          <label>
+            <span class="lang-en">Motion</span>
+            <span class="lang-zh">动态效果</span>
+          </label>
+          <div class="access-options" role="group" aria-label="Motion">
+            <button class="access-option" type="button" data-access-setting="motion" data-access-value="default">
+              <strong>
+                <span class="lang-en">Default</span>
+                <span class="lang-zh">默认</span>
+              </strong>
+              <span>
+                <span class="lang-en">Use all scroll and particle effects</span>
+                <span class="lang-zh">保留滚动与粒子动效</span>
+              </span>
+            </button>
+            <button class="access-option" type="button" data-access-setting="motion" data-access-value="reduce">
+              <strong>
+                <span class="lang-en">Reduce</span>
+                <span class="lang-zh">减少动态</span>
+              </strong>
+              <span>
+                <span class="lang-en">Turn off strong motion and keep a calm layout</span>
+                <span class="lang-zh">关闭强动态效果，保持稳定浏览</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
   <footer class="footer">
     <div class="shell">
       <div class="footer-card">
@@ -3133,17 +3639,165 @@
       .map((link) => document.querySelector(link.getAttribute('href')))
       .filter(Boolean);
 
+    const navLinksContainer = document.querySelector('.nav-links');
+    const navRouteIndicator = document.querySelector('.nav-route-indicator');
     const langButtons = [...document.querySelectorAll('[data-set-lang]')];
     const body = document.body;
     const root = document.documentElement;
     const progressBar = document.querySelector('.scroll-progress-bar');
     const heroSection = document.querySelector('.hero');
+    const accessDock = document.querySelector('.accessibility-dock');
+    const accessToggle = document.querySelector('.access-toggle');
+    const accessPanel = document.querySelector('.access-panel');
+    const accessClose = document.querySelector('.access-close');
+    const accessOptions = [...document.querySelectorAll('.access-option')];
     const storedLang = localStorage.getItem('campus-compass-portfolio-lang');
     const initialLang = storedLang === 'zh' ? 'zh' : 'en';
+    const accessibilityStorageKey = 'campus-compass-portfolio-accessibility';
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let activeNavLink = navLinks[0] || null;
+    let navRouteTimer = 0;
 
     function prefersReducedMotion() {
-      return motionQuery.matches;
+      return motionQuery.matches || body.getAttribute('data-access-motion') === 'reduce';
+    }
+
+    function getAccessibilitySettings() {
+      const defaults = {
+        font: 'default',
+        contrast: 'default',
+        motion: 'default',
+      };
+
+      try {
+        const parsed = JSON.parse(localStorage.getItem(accessibilityStorageKey) || '{}');
+        return {
+          font: parsed.font === 'large' ? 'large' : defaults.font,
+          contrast: parsed.contrast === 'high' ? 'high' : defaults.contrast,
+          motion: parsed.motion === 'reduce' ? 'reduce' : defaults.motion,
+        };
+      } catch (error) {
+        return defaults;
+      }
+    }
+
+    function persistAccessibilitySettings(settings) {
+      localStorage.setItem(accessibilityStorageKey, JSON.stringify(settings));
+    }
+
+    function syncAccessibilityButtons(settings) {
+      accessOptions.forEach((button) => {
+        const setting = button.getAttribute('data-access-setting');
+        const value = button.getAttribute('data-access-value');
+        const isActive = settings[setting] === value;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+    }
+
+    function applyAccessibilitySettings(settings) {
+      body.setAttribute('data-access-font', settings.font);
+      body.setAttribute('data-access-contrast', settings.contrast);
+      body.setAttribute('data-access-motion', settings.motion);
+      syncAccessibilityButtons(settings);
+      window.requestAnimationFrame(() => {
+        updateNavRouteIndicator(activeNavLink);
+      });
+    }
+
+    function setAccessibilityPanelState(isOpen) {
+      if (!accessPanel || !accessToggle) return;
+
+      accessPanel.classList.toggle('is-open', isOpen);
+      accessToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    function initAccessibilityControls() {
+      if (!accessPanel || !accessToggle) return;
+
+      const settings = getAccessibilitySettings();
+      applyAccessibilitySettings(settings);
+
+      accessToggle.addEventListener('click', () => {
+        const nextOpen = !accessPanel.classList.contains('is-open');
+        setAccessibilityPanelState(nextOpen);
+      });
+
+      if (accessClose) {
+        accessClose.addEventListener('click', () => {
+          setAccessibilityPanelState(false);
+          accessToggle.focus();
+        });
+      }
+
+      accessOptions.forEach((button) => {
+        button.addEventListener('click', () => {
+          const nextSettings = {
+            ...getAccessibilitySettings(),
+            [button.getAttribute('data-access-setting')]: button.getAttribute('data-access-value'),
+          };
+
+          persistAccessibilitySettings(nextSettings);
+          applyAccessibilitySettings(nextSettings);
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!accessDock || !accessPanel.classList.contains('is-open')) return;
+        if (accessDock.contains(event.target)) return;
+        setAccessibilityPanelState(false);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && accessPanel.classList.contains('is-open')) {
+          setAccessibilityPanelState(false);
+          accessToggle.focus();
+        }
+      });
+    }
+
+    function updateNavRouteIndicator(link = activeNavLink) {
+      if (!navLinksContainer || !navRouteIndicator || !link) return;
+
+      const containerRect = navLinksContainer.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+
+      if (!containerRect.width || !linkRect.width) return;
+
+      const x = linkRect.left - containerRect.left + Math.max(10, Math.round(linkRect.width * 0.12));
+      const y = linkRect.bottom - containerRect.top + 4;
+      const width = Math.max(36, linkRect.width - Math.max(20, Math.round(linkRect.width * 0.24)));
+
+      navRouteIndicator.style.width = `${width}px`;
+      navRouteIndicator.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      navRouteIndicator.classList.add('is-visible');
+    }
+
+    function pulseNavRouteIndicator() {
+      if (!navRouteIndicator || prefersReducedMotion()) return;
+
+      navRouteIndicator.classList.remove('is-traveling');
+      void navRouteIndicator.offsetWidth;
+      navRouteIndicator.classList.add('is-traveling');
+      window.clearTimeout(navRouteTimer);
+      navRouteTimer = window.setTimeout(() => {
+        navRouteIndicator.classList.remove('is-traveling');
+      }, 680);
+    }
+
+    function setActiveNavLink(link, options = {}) {
+      if (!link) return;
+
+      const { animate = true } = options;
+      const changed = activeNavLink !== link;
+
+      navLinks.forEach((item) => item.classList.toggle('is-active', item === link));
+      activeNavLink = link;
+      updateNavRouteIndicator(link);
+
+      if (changed && animate) {
+        pulseNavRouteIndicator();
+      }
     }
 
     function setLanguage(lang) {
@@ -3166,6 +3820,10 @@
             : 'Campus Compass CPT208 process portfolio with bilingual English-Chinese content covering motivation, requirements, ideation, implementation, evaluation, and reflection.'
         );
       }
+
+      window.requestAnimationFrame(() => {
+        updateNavRouteIndicator(activeNavLink);
+      });
     }
 
     langButtons.forEach((button) => {
@@ -3175,6 +3833,11 @@
     });
 
     setLanguage(initialLang);
+    initAccessibilityControls();
+    setActiveNavLink(activeNavLink, { animate: false });
+    window.addEventListener('resize', () => {
+      updateNavRouteIndicator(activeNavLink);
+    });
 
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver(
@@ -3184,8 +3847,7 @@
             const link = navLinks.find((item) => item.getAttribute('href') === id);
             if (!link) return;
             if (entry.isIntersecting) {
-              navLinks.forEach((item) => item.classList.remove('is-active'));
-              link.classList.add('is-active');
+              setActiveNavLink(link);
             }
           });
         },
@@ -3194,7 +3856,7 @@
 
       sections.forEach((section) => observer.observe(section));
     } else if (navLinks[0]) {
-      navLinks[0].classList.add('is-active');
+      setActiveNavLink(navLinks[0], { animate: false });
     }
 
     function initRevealAnimations() {
@@ -3343,6 +4005,119 @@
             release(button);
           });
         });
+      });
+    }
+
+    function parseCountValue(text) {
+      const trimmed = text.trim();
+      const match = trimmed.match(/^(.*?)(\d+(?:\.\d+)?)(\s*%?)$/);
+
+      if (!match) return null;
+
+      const [, prefix, rawValue, suffix] = match;
+
+      return {
+        prefix,
+        suffix,
+        value: Number(rawValue),
+        decimals: (rawValue.split('.')[1] || '').length,
+      };
+    }
+
+    function formatCountValue(value, config) {
+      const numeric = config.decimals > 0 ? value.toFixed(config.decimals) : `${Math.round(value)}`;
+      return `${config.prefix}${numeric}${config.suffix}`;
+    }
+
+    function initCountUpAnimations() {
+      const targets = [...document.querySelectorAll('.stat strong, .metric strong')];
+
+      if (!targets.length) return;
+
+      const eligibleTargets = targets
+        .map((target) => {
+          const config = parseCountValue(target.textContent);
+          if (!config) return null;
+
+          target.dataset.countFinal = target.textContent.trim();
+          return { target, config };
+        })
+        .filter(Boolean);
+
+      if (!eligibleTargets.length) return;
+
+      function finishCount(target, config) {
+        target.textContent = formatCountValue(config.value, config);
+        target.classList.remove('is-counting');
+        target.classList.add('is-counted');
+      }
+
+      function animateCount(target, config) {
+        if (target.dataset.countAnimated === 'true') return;
+
+        target.dataset.countAnimated = 'true';
+
+        if (prefersReducedMotion()) {
+          finishCount(target, config);
+          return;
+        }
+
+        const duration = Math.min(1800, 920 + config.value * 8);
+        const startTime = performance.now();
+
+        target.classList.add('is-counting');
+        target.classList.remove('is-counted');
+        target.textContent = formatCountValue(0, config);
+
+        function step(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const currentValue = config.value * eased;
+
+          target.textContent = formatCountValue(currentValue, config);
+
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+            return;
+          }
+
+          finishCount(target, config);
+        }
+
+        window.requestAnimationFrame(step);
+      }
+
+      if (!('IntersectionObserver' in window)) {
+        eligibleTargets.forEach(({ target, config }) => {
+          finishCount(target, config);
+        });
+        return;
+      }
+
+      eligibleTargets.forEach(({ target, config }) => {
+        target.textContent = formatCountValue(0, config);
+      });
+
+      const countObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            const target = entry.target;
+            const config = parseCountValue(target.dataset.countFinal || target.textContent);
+
+            if (config) {
+              animateCount(target, config);
+            }
+
+            observer.unobserve(target);
+          });
+        },
+        { threshold: 0.55, rootMargin: '0px 0px -8% 0px' }
+      );
+
+      eligibleTargets.forEach(({ target }) => {
+        countObserver.observe(target);
       });
     }
 
@@ -3531,6 +4306,7 @@
     initAmbientShimmer();
     initScrollFeedback();
     initButtonFeedback();
+    initCountUpAnimations();
     initHeroParticleCanvas();
   </script>
 </body>
