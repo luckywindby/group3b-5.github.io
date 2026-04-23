@@ -742,6 +742,10 @@
       grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 
+    .gallery.site-gallery {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     .architecture {
       grid-template-columns: repeat(5, minmax(0, 1fr));
       align-items: center;
@@ -1395,6 +1399,10 @@
       margin-bottom: 6px;
     }
 
+    .gallery.site-gallery .gallery-card {
+      height: 100%;
+    }
+
     .crazy-tile {
       position: relative;
       min-height: 175px;
@@ -1900,6 +1908,10 @@
       .architecture {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .gallery.site-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 820px) {
@@ -1965,6 +1977,10 @@
         grid-template-columns: 1fr;
       }
 
+      .gallery.site-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .stats-grid {
         grid-template-columns: 1fr;
       }
@@ -2028,6 +2044,11 @@
       .table-wrap {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+      }
+
+      .gallery.site-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
       }
 
       table {
@@ -2818,50 +2839,127 @@
               <span class="lang-zh">现场证据</span>
             </h3>
             <p>
-              <span class="lang-en">The repo preserves route-verification and place-observation assets. Replace or extend them with raw interview photos or clips if your group stored them elsewhere.</span>
-              <span class="lang-zh">仓库里保留了路线核对和现场观察素材。如果小组还有仓库外保存的访谈照片或短视频，请在最终提交前替换或补充。</span>
+              <span class="lang-en">The portfolio now includes real pre-development interview snapshots and on-site route-verification photos from the raw evidence folders. Together, they document both stakeholder research and field observation before and during implementation.</span>
+              <span class="lang-zh">作品集现已补入开发前访谈照片与现场路线核对照片，这些素材直接来自原始证据文件夹，共同呈现了实现前后的利益相关者调研与实地观察过程。</span>
             </p>
           </div>
-          <span class="proof proof-missing">
-            <span class="lang-en">Add raw interview/video files if available</span>
-            <span class="lang-zh">如有原始访谈/视频，请补充</span>
-          </span>
+          <div class="proof-row">
+            <span class="proof proof-code">
+              <span class="lang-en">5 interview photos attached</span>
+              <span class="lang-zh">已补入 5 张访谈照片</span>
+            </span>
+            <span class="proof proof-code">
+              <span class="lang-en">6 site-observation photos attached</span>
+              <span class="lang-zh">已补入 6 张现场采集照片</span>
+            </span>
+          </div>
         </div>
 
+        <span class="subhead">
+          <span class="lang-en">Interview snapshots</span>
+          <span class="lang-zh">访谈过程照片</span>
+        </span>
+        <p class="mini-note" style="margin-top: 0;">
+          <span class="lang-en">These photos were taken before development while discussing onboarding, navigation anxiety, and practical campus needs with Year 1, Year 2, Year 3, Year 4 students, and a visitor/parent.</span>
+          <span class="lang-zh">这些照片拍摄于项目开发前，记录了我们与大一、大二、大三、大四学生及 visitor（家长）围绕入校适应、导航焦虑和实际校园需求进行访谈的过程。</span>
+        </p>
         <div class="gallery">
           <article class="gallery-card">
-            <img src="./assets/fb-building.png" alt="FB building observation / FB 教学楼现场观察" />
+            <img src="./assets/picture/meeting/y1.jpg" alt="Year 1 freshman interview / 大一新生访谈" />
             <div>
-              <strong><span class="lang-en">FB teaching cluster</span><span class="lang-zh">FB 教学楼群</span></strong>
-              <p class="mini-note"><span class="lang-en">Used to validate first-year classroom route entry.</span><span class="lang-zh">用于验证新生教学楼路线入口是否合理。</span></p>
+              <strong><span class="lang-en">Year 1 freshman interview</span><span class="lang-zh">大一新生访谈</span></strong>
+              <p class="mini-note"><span class="lang-en">Captured first-week confusion about building codes, class routes, and where to begin.</span><span class="lang-zh">记录了新生对楼号、上课路线以及“第一步该去哪里”的典型困惑。</span></p>
             </div>
           </article>
           <article class="gallery-card">
-            <img src="./assets/cb-building.png" alt="CB building observation / CB 服务楼现场观察" />
+            <img src="./assets/picture/meeting/y2.jpg" alt="Year 2 student interview / 大二学生访谈" />
             <div>
-              <strong><span class="lang-en">CB services hub</span><span class="lang-zh">CB 服务中心聚合区</span></strong>
-              <p class="mini-note"><span class="lang-en">Used to verify service-point relevance.</span><span class="lang-zh">用于核对服务点在路线中的重要性。</span></p>
+              <strong><span class="lang-en">Year 2 student interview</span><span class="lang-zh">大二学生访谈</span></strong>
+              <p class="mini-note"><span class="lang-en">Helped us compare first-year onboarding needs with later student exploration and service-use needs.</span><span class="lang-zh">帮助我们对比新生导览需求与高年级学生探索、办事等需求的差异。</span></p>
             </div>
           </article>
           <article class="gallery-card">
-            <img src="./assets/hs-building.png" alt="HS building observation / HS 建筑现场观察" />
+            <img src="./assets/picture/meeting/y3.jpg" alt="Year 3 student interview / 大三学生访谈" />
             <div>
-              <strong><span class="lang-en">HS route transition</span><span class="lang-zh">HS 路线衔接点</span></strong>
-              <p class="mini-note"><span class="lang-en">Used to check visitor-route continuity.</span><span class="lang-zh">用于核对访客路线的连贯性。</span></p>
+              <strong><span class="lang-en">Year 3 student interview</span><span class="lang-zh">大三学生访谈</span></strong>
+              <p class="mini-note"><span class="lang-en">Confirmed that practical support tools remain useful beyond freshman-only scenarios.</span><span class="lang-zh">验证了教学楼、服务点和打印等功能并不只服务新生，也对高年级学生有实际价值。</span></p>
             </div>
           </article>
           <article class="gallery-card">
-            <img src="./assets/ai-cafe.png" alt="AI Cafe observation / AI Cafe 地标观察" />
+            <img src="./assets/picture/meeting/y4.jpg" alt="Year 4 student interview / 大四学生访谈" />
             <div>
-              <strong><span class="lang-en">AI Cafe landmark</span><span class="lang-zh">AI Cafe 地标</span></strong>
-              <p class="mini-note"><span class="lang-en">Supports the contemporary visitor-story layer.</span><span class="lang-zh">用于支撑更现代化的访客叙事层。</span></p>
+              <strong><span class="lang-en">Year 4 student interview</span><span class="lang-zh">大四学生访谈</span></strong>
+              <p class="mini-note"><span class="lang-en">Captured reflections on campus familiarity, route usefulness, and which places still matter over time.</span><span class="lang-zh">记录了对校园熟悉度、路线长期实用性以及关键点位价值的回顾性看法。</span></p>
             </div>
           </article>
           <article class="gallery-card">
-            <img src="./assets/campus-lake.png" alt="Campus lake observation / 校园湖现场观察" />
+            <img src="./assets/picture/meeting/vistor.jpg" alt="Visitor and parent interview / visitor与家长访谈" />
             <div>
-              <strong><span class="lang-en">Campus Lake pause point</span><span class="lang-zh">校园湖停留点</span></strong>
-              <p class="mini-note"><span class="lang-en">Used to validate reflection-oriented route moments.</span><span class="lang-zh">用于验证更适合反思和记忆沉淀的停留节点。</span></p>
+              <strong><span class="lang-en">Visitor and parent interview</span><span class="lang-zh">visitor 与家长访谈</span></strong>
+              <p class="mini-note"><span class="lang-en">Captured the need for short, clear, reassuring tours that do not assume prior campus knowledge.</span><span class="lang-zh">记录了 visitor 和家长对短时、清晰、可安心跟随的校园导览需求。</span></p>
+            </div>
+          </article>
+        </div>
+
+        <article class="figure-card" style="margin-top: 18px;">
+          <figure class="poster-frame">
+            <img src="./assets/Participant%20Information%20and%20Consent%20Form.jpg" alt="Participant information and consent form / 参与者信息与知情同意书" />
+            <figcaption>
+              <span class="lang-en">Bilingual participant information and consent form used before interviews. It states that responses were recorded only through handwritten or typed notes, used only for CPT208 coursework, and deleted or destroyed one month after the course ended.</span>
+              <span class="lang-zh">访谈前使用的中英文双语参与者信息与知情同意书。其内容说明：访谈仅以手写或打字方式记录，不进行录音录像；材料仅用于 CPT208 课程作业，并将在课程结束一个月后删除或销毁。</span>
+            </figcaption>
+          </figure>
+        </article>
+
+        <span class="subhead" style="margin-top: 24px;">
+          <span class="lang-en">Site observation and route verification</span>
+          <span class="lang-zh">现场点位采集与路线核对</span>
+        </span>
+        <p class="mini-note" style="margin-top: 0;">
+          <span class="lang-en">These photos were captured on campus while verifying teaching buildings, landmarks, connectors, arrival points, and hidden-spot candidates used in the implemented route families.</span>
+          <span class="lang-zh">这些照片拍摄于校园现场核对过程中，用于验证教学楼、地标、连廊、到达入口以及项目中实际使用的隐藏点位候选。</span>
+        </p>
+        <div class="gallery site-gallery">
+          <article class="gallery-card">
+            <img src="./assets/picture/data/FB.jpg" alt="FB teaching building validation / FB 教学楼点位核对" />
+            <div>
+              <strong><span class="lang-en">FB teaching-building check</span><span class="lang-zh">FB 教学楼核对</span></strong>
+              <p class="mini-note"><span class="lang-en">Used to confirm first-year academic route relevance and real-world building visibility.</span><span class="lang-zh">用于验证新生学术路线中的教学楼可见性与实际到达逻辑。</span></p>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <img src="./assets/picture/data/HS.jpg" alt="HS building validation / HS 建筑点位核对" />
+            <div>
+              <strong><span class="lang-en">HS building transition point</span><span class="lang-zh">HS 路线衔接点</span></strong>
+              <p class="mini-note"><span class="lang-en">Supports route continuity checks across different campus zones.</span><span class="lang-zh">用于核对不同校园区域之间的路线衔接与转场连续性。</span></p>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <img src="./assets/picture/data/connector.jpg" alt="Campus connector observation / 校园连廊现场观察" />
+            <div>
+              <strong><span class="lang-en">Connector and corridor check</span><span class="lang-zh">连廊与走廊核对</span></strong>
+              <p class="mini-note"><span class="lang-en">Used to verify movement between buildings and whether map instructions matched the real path.</span><span class="lang-zh">用于验证楼宇间通行路线，以及地图提示是否与真实路径一致。</span></p>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <img src="./assets/picture/data/central%20square.jpg" alt="Central square landmark observation / 中央广场地标观察" />
+            <div>
+              <strong><span class="lang-en">Central square landmark</span><span class="lang-zh">中央广场地标</span></strong>
+              <p class="mini-note"><span class="lang-en">Supports visitor orientation and helps test whether open landmarks work as reassurance points.</span><span class="lang-zh">用于验证开放地标是否能作为 visitor 导览中的方向确认点和心理锚点。</span></p>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <img src="./assets/picture/data/AI_coffee.jpg" alt="AI Coffee hidden spot observation / AI Coffee 隐藏点位观察" />
+            <div>
+              <strong><span class="lang-en">AI Coffee hidden spot candidate</span><span class="lang-zh">AI Coffee 隐藏点位候选</span></strong>
+              <p class="mini-note"><span class="lang-en">Used when checking whether playful exploration stops could sit on top of the practical route core.</span><span class="lang-zh">用于验证探索型隐藏点位是否能叠加在实用路线主线之上。</span></p>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <img src="./assets/picture/data/north%20gate.jpg" alt="North gate arrival-point observation / 北门到达点观察" />
+            <div>
+              <strong><span class="lang-en">North gate arrival point</span><span class="lang-zh">北门到达点</span></strong>
+              <p class="mini-note"><span class="lang-en">Used to verify arrival-based entry scenarios for visitors and first-time users.</span><span class="lang-zh">用于验证访客和首次到校用户从入口开始的到达型使用场景。</span></p>
             </div>
           </article>
         </div>
@@ -2893,9 +2991,24 @@
             <span class="lang-zh">8 个快速概念方向</span>
           </h3>
           <p class="muted">
-            <span class="lang-en">The photographed sketch sheet is not preserved in the current repo snapshot, so the grid below reconstructs the explored directions faithfully.</span>
-            <span class="lang-zh">当前仓库快照中没有保留原始手绘草图照片，因此下面以重构方式呈现当时探索过的 8 个方向。</span>
+            <span class="lang-en">The photographed Crazy Eights sketch sheet is now attached below. It records the eight concept directions explored in early ideation before the team converged on the current hybrid route-entry model.</span>
+            <span class="lang-zh">Crazy Eights 手绘草图照片现已补入下方。它记录了团队在早期构思阶段探索过的 8 个方向，并展示了我们最终收敛到当前混合式路线入口方案之前的比较过程。</span>
           </p>
+          <div class="proof-row" style="margin-top: 16px;">
+            <span class="proof proof-code">
+              <span class="lang-en">Photographed Crazy Eights sheet attached</span>
+              <span class="lang-zh">已补入 Crazy Eights 草图照片</span>
+            </span>
+          </div>
+          <article class="figure-card" style="margin-top: 18px;">
+            <figure class="poster-frame">
+              <img src="./assets/Crazy%20Eights.png" alt="Crazy Eights early ideation sketch sheet / Crazy Eights 早期构思草图" />
+              <figcaption>
+                <span class="lang-en">Photographed hand-drawn Crazy Eights sheet showing eight alternative route-entry, navigation, and ending concepts explored before implementation.</span>
+                <span class="lang-zh">实拍手绘 Crazy Eights 草图，展示了编码实现前探索过的 8 种路线入口、导航和结束方式概念。</span>
+              </figcaption>
+            </figure>
+          </article>
           <div class="crazy-grid" style="margin-top: 16px;">
             <article class="crazy-tile"><span class="crazy-index">1</span><h4><span class="lang-en">Fixed freshman mainline</span><span class="lang-zh">固定新生主线</span></h4><p><span class="lang-en">One default route, very simple but rigid.</span><span class="lang-zh">只有一条默认路线，简单但过于僵硬。</span></p></article>
             <article class="crazy-tile"><span class="crazy-index">2</span><h4><span class="lang-en">Browse-first library</span><span class="lang-zh">先浏览再选择</span></h4><p><span class="lang-en">Flexible, but increases decision load.</span><span class="lang-zh">更自由，但提高了决策负担。</span></p></article>
@@ -2905,12 +3018,6 @@
             <article class="crazy-tile"><span class="crazy-index">6</span><h4><span class="lang-en">Quick-pick scenarios</span><span class="lang-zh">快捷场景芯片</span></h4><p><span class="lang-en">Faster entry for common needs.</span><span class="lang-zh">适合常见需求的快速入口。</span></p></article>
             <article class="crazy-tile"><span class="crazy-index">7</span><h4><span class="lang-en">Route-detail storytelling</span><span class="lang-zh">路线详情叙事化</span></h4><p><span class="lang-en">Stops are explained, not only listed.</span><span class="lang-zh">站点不仅被罗列，还会被解释。</span></p></article>
             <article class="crazy-tile"><span class="crazy-index">8</span><h4><span class="lang-en">Memory-based ending</span><span class="lang-zh">记忆沉淀式结尾</span></h4><p><span class="lang-en">Navigation ends with memory and belonging.</span><span class="lang-zh">导航最后落到记忆与归属感。</span></p></article>
-          </div>
-          <div class="proof-row" style="margin-top: 16px;">
-            <span class="proof proof-missing">
-              <span class="lang-en">Replace with photographed Crazy Eights sketch sheet if available</span>
-              <span class="lang-zh">如有原始 Crazy Eights 草图照片，请替换为真实图片</span>
-            </span>
           </div>
         </article>
 
@@ -3376,32 +3483,29 @@
           <article class="panel">
             <span class="badge is-warning"><span class="lang-en">Before</span><span class="lang-zh">改动前</span></span>
             <h4><span class="lang-en">Browse-first entry created decision pressure</span><span class="lang-zh">先浏览再选择会带来更大决策压力</span></h4>
-            <div class="mock-wireframe" aria-label="Reconstructed browse-heavy wireframe / 重构的浏览优先线框图">
-              <div class="wire-bar"></div>
-              <div class="wire-pill-row">
-                <div class="wire-pill"></div>
-                <div class="wire-pill"></div>
-                <div class="wire-pill"></div>
-              </div>
-              <div class="wire-card"></div>
-              <div class="wire-card"></div>
-              <div class="wire-card"></div>
+            <div class="ref-image">
+              <img src="./assets/before.png" alt="Browse-first route library sketch / 先浏览后选择的路线库草图" />
             </div>
             <p class="mini-note" style="margin-top: 12px;">
-              <span class="lang-en">Reconstructed from the discarded early direction: users had to interpret route families before expressing their actual need.</span>
-              <span class="lang-zh">这是根据被放弃的早期方向重构的示意：用户必须先理解路线家族，才能表达真实需求。</span>
+              <span class="lang-en">Reconstructed from the discarded early direction, this browse-heavy start asked users to decode route families before stating a real goal such as going to class, finding services, or visiting campus. For first-time freshmen and visitors, this increased hesitation and cognitive load at the exact moment they needed reassurance. It was later replaced by a recommendation-led hybrid entry that lets users begin from need, not from taxonomy.</span>
+              <span class="lang-zh">这张图根据被放弃的早期方向重构而成：用户必须先理解“路线家族”分类，才能表达自己真实的任务，例如去上课、找服务点或带访客参观。对于首次使用的新生和访客来说，这会在最需要被引导的时候增加犹豫和认知负担。后来我们改成了以推荐为主的混合式入口，让用户从“需求”出发，而不是从“分类”出发。</span>
             </p>
           </article>
 
           <article class="panel">
             <span class="badge is-good"><span class="lang-en">After</span><span class="lang-zh">改动后</span></span>
             <h4><span class="lang-en">Hybrid route entry supports confidence and flexibility</span><span class="lang-zh">混合式入口同时支持信心建立与灵活性</span></h4>
-            <div class="ref-image">
-              <img src="./assets/amap-route-entry.png" alt="Implemented hybrid route entry / 已实现的混合式路线入口" />
+            <div style="display: grid; gap: 16px; margin-top: 0;">
+              <div class="ref-image">
+                <img src="./assets/after2.png" alt="Implemented route modes and practical tools / 已实现的路线模式与实用工具入口" />
+              </div>
+              <div class="ref-image">
+                <img src="./assets/after.png" alt="Implemented hybrid route quick-entry screen / 已实现的混合式路线快捷入口页面" />
+              </div>
             </div>
             <p class="mini-note" style="margin-top: 12px;">
-              <span class="lang-en">The implemented screen lets users start from recommendation, quick scenarios, and practical tools while still preserving route browsing.</span>
-              <span class="lang-zh">实现后的页面允许用户从推荐、快捷场景和实用工具开始，同时保留路线浏览能力。</span>
+              <span class="lang-en">The implemented flow now combines a clear recommendation entry, route-mode cards, and practical shortcuts for buildings, services, printers, and visitor-style exploration. This lowers first-use decision pressure because users can act on an immediate need first, then browse further only if they want to. It also aligns more closely with the requirement findings that users valued clear route guidance and practical support more strongly than open-ended exploration alone.</span>
+              <span class="lang-zh">实现后的流程把清晰的推荐入口、路线模式卡片以及教学楼、服务点、打印和 visitor 式探索等实用快捷入口结合在一起。这样用户可以先回应眼前的真实需求，再决定是否继续浏览和探索，从而显著降低首次使用时的决策压力。这也更符合需求调研结果：用户对清晰路线引导和实用支持的重视程度，高于单纯开放式探索。</span>
             </p>
           </article>
         </div>
