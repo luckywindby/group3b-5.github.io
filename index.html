@@ -174,31 +174,35 @@
     }
 
     .accessibility-dock {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 60;
+      position: relative;
+      z-index: 95;
       display: grid;
       gap: 10px;
       justify-items: end;
+      flex: 0 0 auto;
     }
 
     .access-toggle {
       appearance: none;
       border: 0;
-      min-height: 48px;
+      min-height: 38px;
       min-width: 48px;
-      padding: 0 16px;
+      padding: 0 14px;
       border-radius: 999px;
       background: linear-gradient(135deg, rgba(32, 90, 152, 0.98), rgba(26, 137, 169, 0.96));
       color: white;
-      box-shadow: 0 16px 30px rgba(32, 90, 152, 0.22);
+      box-shadow: 0 10px 20px rgba(32, 90, 152, 0.18);
       cursor: pointer;
       font-weight: 800;
+      font-size: 0.9rem;
       letter-spacing: 0.02em;
+      white-space: nowrap;
     }
 
     .access-panel {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
       width: min(320px, calc(100vw - 24px));
       padding: 16px;
       border-radius: 22px;
@@ -432,11 +436,11 @@
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 90;
       backdrop-filter: blur(18px);
       background: rgba(247, 243, 235, 0.88);
       border-bottom: 1px solid rgba(23, 49, 76, 0.08);
-      overflow: hidden;
+      overflow: visible;
     }
 
     .scroll-progress {
@@ -2089,19 +2093,9 @@
         bottom: -1px;
       }
 
-      .accessibility-dock {
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-        justify-items: stretch;
-      }
-
-      .access-toggle {
-        justify-self: end;
-      }
-
       .access-panel {
-        width: 100%;
+        width: min(320px, calc(100vw - 24px));
+        max-width: min(320px, calc(100vw - 24px));
       }
     }
 
@@ -2116,6 +2110,15 @@
 
       .brand-copy strong {
         font-size: 1rem;
+      }
+
+      .lang-switcher {
+        align-self: auto;
+      }
+
+      .access-toggle {
+        padding: 0 12px;
+        font-size: 0.84rem;
       }
 
       .brand-copy small {
@@ -2197,6 +2200,123 @@
         <div class="lang-switcher" aria-label="Language switcher / 语言切换">
           <button class="is-active" data-set-lang="en">EN</button>
           <button data-set-lang="zh">中文</button>
+        </div>
+
+        <div class="accessibility-dock">
+          <button
+            class="access-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="accessibility-panel"
+          >
+            <span class="lang-en">Accessibility</span>
+            <span class="lang-zh">无障碍</span>
+          </button>
+
+          <section class="access-panel" id="accessibility-panel" aria-label="Accessibility settings">
+            <div class="access-head">
+              <div>
+                <strong>
+                  <span class="lang-en">Accessibility</span>
+                  <span class="lang-zh">无障碍设置</span>
+                </strong>
+                <p>
+                  <span class="lang-en">Adjust readability, contrast, and motion for desktop and mobile viewing.</span>
+                  <span class="lang-zh">调整字号、对比度和动态效果，让网页端与手机端都更易读。</span>
+                </p>
+              </div>
+              <button class="access-close" type="button" aria-label="Close accessibility settings">×</button>
+            </div>
+
+            <div class="access-groups">
+              <div class="access-group">
+                <label>
+                  <span class="lang-en">Text size</span>
+                  <span class="lang-zh">文字大小</span>
+                </label>
+                <div class="access-options" role="group" aria-label="Text size">
+                  <button class="access-option" type="button" data-access-setting="font" data-access-value="default">
+                    <strong>
+                      <span class="lang-en">Default</span>
+                      <span class="lang-zh">默认</span>
+                    </strong>
+                    <span>
+                      <span class="lang-en">Balanced reading size</span>
+                      <span class="lang-zh">常规阅读字号</span>
+                    </span>
+                  </button>
+                  <button class="access-option" type="button" data-access-setting="font" data-access-value="large">
+                    <strong>
+                      <span class="lang-en">Large</span>
+                      <span class="lang-zh">放大</span>
+                    </strong>
+                    <span>
+                      <span class="lang-en">Larger text and spacing</span>
+                      <span class="lang-zh">更大的文字与行距</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="access-group">
+                <label>
+                  <span class="lang-en">Contrast</span>
+                  <span class="lang-zh">对比度</span>
+                </label>
+                <div class="access-options" role="group" aria-label="Contrast">
+                  <button class="access-option" type="button" data-access-setting="contrast" data-access-value="default">
+                    <strong>
+                      <span class="lang-en">Standard</span>
+                      <span class="lang-zh">标准</span>
+                    </strong>
+                    <span>
+                      <span class="lang-en">Keep the current visual style</span>
+                      <span class="lang-zh">保持当前页面风格</span>
+                    </span>
+                  </button>
+                  <button class="access-option" type="button" data-access-setting="contrast" data-access-value="high">
+                    <strong>
+                      <span class="lang-en">High</span>
+                      <span class="lang-zh">高对比</span>
+                    </strong>
+                    <span>
+                      <span class="lang-en">Stronger text and border contrast</span>
+                      <span class="lang-zh">增强文字与边框对比</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="access-group">
+                <label>
+                  <span class="lang-en">Motion</span>
+                  <span class="lang-zh">动态效果</span>
+                </label>
+                <div class="access-options" role="group" aria-label="Motion">
+                  <button class="access-option" type="button" data-access-setting="motion" data-access-value="default">
+                    <strong>
+                      <span class="lang-en">Default</span>
+                      <span class="lang-zh">默认</span>
+                    </strong>
+                    <span>
+                      <span class="lang-en">Use all scroll and particle effects</span>
+                      <span class="lang-zh">保留滚动与粒子动效</span>
+                    </span>
+                  </button>
+                  <button class="access-option" type="button" data-access-setting="motion" data-access-value="reduce">
+                    <strong>
+                      <span class="lang-en">Reduce</span>
+                      <span class="lang-zh">减少动态</span>
+                    </strong>
+                    <span>
+                      <span class="lang-en">Turn off strong motion and keep a calm layout</span>
+                      <span class="lang-zh">关闭强动效，保持稳定浏览</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>
@@ -3637,123 +3757,6 @@
       </div>
     </section>
   </main>
-
-  <div class="accessibility-dock">
-    <button
-      class="access-toggle"
-      type="button"
-      aria-expanded="false"
-      aria-controls="accessibility-panel"
-    >
-      <span class="lang-en">Accessibility</span>
-      <span class="lang-zh">无障碍</span>
-    </button>
-
-    <section class="access-panel" id="accessibility-panel" aria-label="Accessibility settings">
-      <div class="access-head">
-        <div>
-          <strong>
-            <span class="lang-en">Accessibility</span>
-            <span class="lang-zh">无障碍设置</span>
-          </strong>
-          <p>
-            <span class="lang-en">Adjust readability, contrast, and motion for desktop and mobile viewing.</span>
-            <span class="lang-zh">调整字号、对比度和动态效果，让网页端与手机端都更易读。</span>
-          </p>
-        </div>
-        <button class="access-close" type="button" aria-label="Close accessibility settings">×</button>
-      </div>
-
-      <div class="access-groups">
-        <div class="access-group">
-          <label>
-            <span class="lang-en">Text size</span>
-            <span class="lang-zh">文字大小</span>
-          </label>
-          <div class="access-options" role="group" aria-label="Text size">
-            <button class="access-option" type="button" data-access-setting="font" data-access-value="default">
-              <strong>
-                <span class="lang-en">Default</span>
-                <span class="lang-zh">默认</span>
-              </strong>
-              <span>
-                <span class="lang-en">Balanced reading size</span>
-                <span class="lang-zh">常规阅读字号</span>
-              </span>
-            </button>
-            <button class="access-option" type="button" data-access-setting="font" data-access-value="large">
-              <strong>
-                <span class="lang-en">Large</span>
-                <span class="lang-zh">放大</span>
-              </strong>
-              <span>
-                <span class="lang-en">Larger text and spacing</span>
-                <span class="lang-zh">更大的文字与行距</span>
-              </span>
-            </button>
-          </div>
-        </div>
-
-        <div class="access-group">
-          <label>
-            <span class="lang-en">Contrast</span>
-            <span class="lang-zh">对比度</span>
-          </label>
-          <div class="access-options" role="group" aria-label="Contrast">
-            <button class="access-option" type="button" data-access-setting="contrast" data-access-value="default">
-              <strong>
-                <span class="lang-en">Standard</span>
-                <span class="lang-zh">标准</span>
-              </strong>
-              <span>
-                <span class="lang-en">Keep the current visual style</span>
-                <span class="lang-zh">保持当前页面风格</span>
-              </span>
-            </button>
-            <button class="access-option" type="button" data-access-setting="contrast" data-access-value="high">
-              <strong>
-                <span class="lang-en">High</span>
-                <span class="lang-zh">高对比</span>
-              </strong>
-              <span>
-                <span class="lang-en">Stronger text and border contrast</span>
-                <span class="lang-zh">增强文字与边框对比</span>
-              </span>
-            </button>
-          </div>
-        </div>
-
-        <div class="access-group">
-          <label>
-            <span class="lang-en">Motion</span>
-            <span class="lang-zh">动态效果</span>
-          </label>
-          <div class="access-options" role="group" aria-label="Motion">
-            <button class="access-option" type="button" data-access-setting="motion" data-access-value="default">
-              <strong>
-                <span class="lang-en">Default</span>
-                <span class="lang-zh">默认</span>
-              </strong>
-              <span>
-                <span class="lang-en">Use all scroll and particle effects</span>
-                <span class="lang-zh">保留滚动与粒子动效</span>
-              </span>
-            </button>
-            <button class="access-option" type="button" data-access-setting="motion" data-access-value="reduce">
-              <strong>
-                <span class="lang-en">Reduce</span>
-                <span class="lang-zh">减少动态</span>
-              </strong>
-              <span>
-                <span class="lang-en">Turn off strong motion and keep a calm layout</span>
-                <span class="lang-zh">关闭强动态效果，保持稳定浏览</span>
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
 
   <footer class="footer">
     <div class="shell">
