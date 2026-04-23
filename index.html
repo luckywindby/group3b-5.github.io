@@ -715,6 +715,13 @@
       align-content: start;
     }
 
+    .hero-side-stack {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-content: start;
+    }
+
     .layout-2,
     .journey-grid,
     .implementation-grid,
@@ -744,6 +751,10 @@
 
     .gallery.site-gallery {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .research-stack {
+      grid-template-columns: 1fr;
     }
 
     .architecture {
@@ -998,6 +1009,16 @@
 
     .facts-card {
       animation: hero-rise 0.9s var(--ease-smooth) 0.28s both;
+    }
+
+    .hero-copy .facts-card {
+      margin: 18px 0 0;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(23, 49, 76, 0.08);
+      box-shadow: 0 16px 34px rgba(18, 38, 63, 0.08);
+      animation: none;
     }
 
     .hero-visual-meta {
@@ -1912,6 +1933,10 @@
       .gallery.site-gallery {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
+
+      .research-stack {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 820px) {
@@ -1979,6 +2004,11 @@
 
       .gallery.site-gallery {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .research-stack,
+      .hero-side-stack {
+        grid-template-columns: 1fr;
       }
 
       .stats-grid {
@@ -2188,6 +2218,49 @@
             <span class="lang-en">A Human-Centred Campus Tour and Navigation Web App for XJTLU Students and Visitors</span>
             <span class="lang-zh">一款面向西浦学生与访客、以人为中心的校园导览与导航 Web 应用</span>
           </p>
+          <div class="facts-card">
+            <strong>
+              <span class="lang-en">Portfolio at a glance</span>
+              <span class="lang-zh">页面概览</span>
+            </strong>
+            <div class="stats-grid">
+              <div class="stat">
+                <strong>6</strong>
+                <span>
+                  <span class="lang-en">Core routes across freshman, student, and visitor modes</span>
+                  <span class="lang-zh">覆盖新生、在校生、访客三类模式的 6 条核心路线</span>
+                </span>
+              </div>
+              <div class="stat">
+                <strong>3</strong>
+                <span>
+                  <span class="lang-en">Primary user groups supported by the live app</span>
+                  <span class="lang-zh">系统支持的 3 类主要用户群体</span>
+                </span>
+              </div>
+              <div class="stat">
+                <strong>n = 94</strong>
+                <span>
+                  <span class="lang-en">First-year questionnaire respondents reported in the poster</span>
+                  <span class="lang-zh">海报中汇总的有效新生问卷样本量</span>
+                </span>
+              </div>
+              <div class="stat">
+                <strong>n = 21</strong>
+                <span>
+                  <span class="lang-en">Alpha route-entry submissions summarised in the poster</span>
+                  <span class="lang-zh">海报中归纳的 Alpha 阶段路线入口提交数</span>
+                </span>
+              </div>
+            </div>
+            <div class="chips">
+              <span class="chip">React + Vite</span>
+              <span class="chip">Node.js API</span>
+              <span class="chip">AMap</span>
+              <span class="chip">Campus Memory</span>
+              <span class="chip">DeepSeek</span>
+            </div>
+          </div>
           <p class="lede">
             <span class="lang-en">
               This process portfolio documents how we turned campus navigation into a guided onboarding experience
@@ -2227,7 +2300,7 @@
           </div>
         </article>
 
-        <div class="layout-2 hero-side-grid">
+        <div class="hero-side-stack">
           <article class="card hero-particle-card">
             <div class="hero-visual-meta">
               <div>
@@ -2273,49 +2346,6 @@
             </div>
           </article>
 
-          <article class="card facts-card">
-            <strong>
-              <span class="lang-en">Portfolio at a glance</span>
-              <span class="lang-zh">页面概览</span>
-            </strong>
-            <div class="stats-grid">
-              <div class="stat">
-                <strong>6</strong>
-                <span>
-                  <span class="lang-en">Core routes across freshman, student, and visitor modes</span>
-                  <span class="lang-zh">覆盖新生、在校生、访客三类模式的 6 条核心路线</span>
-                </span>
-              </div>
-              <div class="stat">
-                <strong>3</strong>
-                <span>
-                  <span class="lang-en">Primary user groups supported by the live app</span>
-                  <span class="lang-zh">系统支持的 3 类主要用户群体</span>
-                </span>
-              </div>
-              <div class="stat">
-                <strong>n = 94</strong>
-                <span>
-                  <span class="lang-en">First-year questionnaire respondents reported in the poster</span>
-                  <span class="lang-zh">海报中汇总的有效新生问卷样本量</span>
-                </span>
-              </div>
-              <div class="stat">
-                <strong>n = 21</strong>
-                <span>
-                  <span class="lang-en">Alpha route-entry submissions summarised in the poster</span>
-                  <span class="lang-zh">海报中归纳的 Alpha 阶段路线入口提交数</span>
-                </span>
-              </div>
-            </div>
-            <div class="chips">
-              <span class="chip">React + Vite</span>
-              <span class="chip">Node.js API</span>
-              <span class="chip">AMap</span>
-              <span class="chip">Campus Memory</span>
-              <span class="chip">DeepSeek</span>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -2438,7 +2468,7 @@
               <span class="lang-en">Academic papers</span>
               <span class="lang-zh">学术论文</span>
             </span>
-            <div class="research-grid">
+            <div class="research-grid research-stack">
               <article class="feature-card">
                 <h4>Paetow et al. (2021)</h4>
                 <ul>
@@ -2518,7 +2548,7 @@
               <span class="lang-en">Commercial products</span>
               <span class="lang-zh">商业产品</span>
             </span>
-            <div class="research-grid">
+            <div class="research-grid research-stack">
               <article class="feature-card">
                 <h4>AMap</h4>
                 <ul>
@@ -3299,7 +3329,7 @@
               <tr>
                 <td>Binyu Li</td>
                 <td>2364567</td>
-                <td><span class="lang-en">Questionnaire design and collection, main HCI innovation design, full system coding, mobile and web usability optimisation, deep visual refinement, poster writing, chart design, and all later poster/portfolio edits.</span><span class="lang-zh">负责开发前调研问卷设计与数据收集、产品中所有主要人机交互创新点设计、完整系统开发、网页端与手机端友好性设计、网页深度优化与美化、海报文字与图表信息整理，以及此后对海报和网页内容的持续修改。</span></td>
+                <td><span class="lang-en">Questionnaire design and collection, main HCI innovation design, full system coding, mobile and web usability optimisation, deep visual refinement, poster writing, chart design, portfolio design and completion, and all later poster/portfolio edits.</span><span class="lang-zh">负责开发前调研问卷设计与数据收集、产品中所有主要人机交互创新点设计、完整系统开发、网页端与手机端友好性设计、网页深度优化与美化、海报文字与图表信息整理、portfolio 的设计与完成，以及此后对海报和网页内容的持续修改。</span></td>
                 <td><span class="lang-en">Lead implementation and delivery scope recorded in the team log.</span><span class="lang-zh">团队记录中标注为主要实现与交付范围。</span></td>
               </tr>
               <tr>
