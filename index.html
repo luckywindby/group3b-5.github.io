@@ -7,7 +7,7 @@
   <meta
     id="meta-description"
     name="description"
-    content="Campus Compass CPT208 process portfolio / Campus Compass 的 CPT208 过程作品集，包含中英双语的项目动机、需求、构思、实现、评估与反思。"
+    content="Campus Compass CPT208 process portfolio / Campus Compass 的 CPT208 过程作品集，包含中英双语的项目动机、需求、构思、实现、贡献、评估与反思。"
   />
   <style>
     :root {
@@ -531,7 +531,7 @@
     .nav-group {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
@@ -580,7 +580,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-end;
-      gap: 10px;
+      gap: 8px;
       position: relative;
       align-items: flex-start;
       padding-bottom: 16px;
@@ -658,10 +658,10 @@
     }
 
     .nav-links a {
-      padding: 10px 14px;
+      padding: 10px 12px;
       border-radius: 999px;
       color: var(--ink-soft);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       position: relative;
       overflow: hidden;
       z-index: 1;
@@ -1248,7 +1248,7 @@
       color: #85510b;
     }
 
-    .proof-missing {
+    .proof-external {
       background: var(--rose);
       color: #8b4534;
     }
@@ -2286,6 +2286,10 @@
             <span class="lang-en">Implementation</span>
             <span class="lang-zh">实现</span>
           </a>
+          <a href="#contribution" aria-label="Jump to individual contribution section / 跳转到个人贡献部分">
+            <span class="lang-en">Contribution</span>
+            <span class="lang-zh">个人贡献</span>
+          </a>
           <a href="#evaluation">
             <span class="lang-en">Evaluation</span>
             <span class="lang-zh">评估</span>
@@ -2505,9 +2509,9 @@
               <span class="lang-en">Poster-derived summary</span>
               <span class="lang-zh">海报归纳数据</span>
             </span>
-            <span class="proof proof-missing">
-              <span class="lang-en">External raw artifact to attach</span>
-              <span class="lang-zh">需补充的外部原始材料</span>
+            <span class="proof proof-external">
+              <span class="lang-en">Supporting external artifacts</span>
+              <span class="lang-zh">外部支持材料</span>
             </span>
           </div>
 
@@ -2516,9 +2520,17 @@
               <span class="lang-en">Read the process</span>
               <span class="lang-zh">查看全过程</span>
             </a>
-            <a class="btn btn-secondary" href="./cpt208%20poster%20(2).pdf" target="_blank" rel="noreferrer">
+            <a class="btn btn-secondary" href="https://campus-compass-z56r.onrender.com/" target="_blank" rel="noreferrer">
+              <span class="lang-en">Open live app</span>
+              <span class="lang-zh">打开线上应用</span>
+            </a>
+            <a class="btn btn-secondary" href="./CPT208%203B-5.pdf" target="_blank" rel="noreferrer">
               <span class="lang-en">Open poster PDF</span>
               <span class="lang-zh">打开海报 PDF</span>
+            </a>
+            <a class="btn btn-secondary" href="https://video.xjtlu.edu.cn/Mediasite/Play/6e0dad5219fb4023aa3ad0420d9d30e21d" target="_blank" rel="noreferrer">
+              <span class="lang-en">Open demo video</span>
+              <span class="lang-zh">打开演示视频</span>
             </a>
           </div>
         </article>
@@ -3734,41 +3746,46 @@
               <span class="lang-zh">线上链接状态</span>
             </span>
             <h3>
-              <span class="lang-en">Deployment note</span>
-              <span class="lang-zh">部署说明</span>
+              <span class="lang-en">Live deployment</span>
+              <span class="lang-zh">线上部署</span>
             </h3>
             <p>
-              <span class="lang-en">The workspace contains the full high-fidelity codebase and deployment configuration, but no public production URL is preserved in the repo snapshot.</span>
-              <span class="lang-zh">当前工作区包含完整高保真代码和部署配置，但仓库快照中没有保留最终的公开线上地址。</span>
+              <span class="lang-en">The high-fidelity Campus Compass app is deployed on Render and available through the final public URL.</span>
+              <span class="lang-zh">Campus Compass 高保真应用已部署在 Render，并可通过最终公开线上地址访问。</span>
             </p>
             <div class="callout" style="margin-top: 16px;">
-              <strong><span class="lang-en">Before assessment</span><span class="lang-zh">评测前需要补充</span></strong>
-              <span class="lang-en">Add the final public app URL here once the hosted version remains active during marking.</span>
-              <span class="lang-zh">请在最终部署后，把可访问的线上地址补到这里，并确保评分期间保持可用。</span>
+              <strong><span class="lang-en">Final public app URL</span><span class="lang-zh">最终公开线上地址</span></strong>
+              <span class="lang-en"><a href="https://campus-compass-z56r.onrender.com/" target="_blank" rel="noreferrer" style="color: var(--brand); font-weight: 700;">https://campus-compass-z56r.onrender.com/</a></span>
+              <span class="lang-zh"><a href="https://campus-compass-z56r.onrender.com/" target="_blank" rel="noreferrer" style="color: var(--brand); font-weight: 700;">https://campus-compass-z56r.onrender.com/</a></span>
             </div>
             <ul>
               <li><span class="lang-en">Local secure mobile testing is documented in the README.</span><span class="lang-zh">README 中已记录本地 HTTPS 手机测试方法。</span></li>
-              <li><span class="lang-en">The system is deployment-ready for a hosted Node + Postgres setup.</span><span class="lang-zh">系统已具备 Node + Postgres 部署准备。</span></li>
-              <li><span class="lang-en">Poster and portfolio should point to the same final live URL.</span><span class="lang-zh">海报和 portfolio 最终应指向同一个线上地址。</span></li>
+              <li><span class="lang-en">The hosted Render version provides the public assessment entry point for the working app.</span><span class="lang-zh">Render 线上版本提供评审可访问的正式应用入口。</span></li>
+              <li><span class="lang-en">Poster and portfolio now point to the same final live URL.</span><span class="lang-zh">海报和 portfolio 现在指向同一个最终线上地址。</span></li>
             </ul>
             <div class="proof-row">
-              <span class="proof proof-missing">
-                <span class="lang-en">Insert final public app URL</span>
-                <span class="lang-zh">请补充最终线上地址</span>
+              <span class="proof proof-code">
+                <span class="lang-en">Final live URL added</span>
+                <span class="lang-zh">最终线上地址已填写</span>
               </span>
             </div>
           </article>
         </div>
 
-        <div class="section-head" style="margin-top: 24px;">
+      </div>
+    </section>
+
+    <section id="contribution">
+      <div class="shell">
+        <div class="section-head">
           <div>
-            <h3>
-              <span class="lang-en">Individual contributions</span>
-              <span class="lang-zh">个人贡献</span>
-            </h3>
+            <h2>
+              <span class="lang-en">5. Contribution</span>
+              <span class="lang-zh">5. 贡献</span>
+            </h2>
             <p>
-              <span class="lang-en">The table below reflects the team record supplied for this submission.</span>
-              <span class="lang-zh">下表基于你提供的团队分工记录整理。</span>
+              <span class="lang-en">This section separates the role distribution and individual contribution evidence from the implementation record.</span>
+              <span class="lang-zh">本节将团队分工与个人贡献证据从实现记录中单独列出，便于评估每位成员的具体职责。</span>
             </p>
           </div>
         </div>
@@ -3805,6 +3822,7 @@
                       <li>Designed and implemented camera-based interactive memory features and AR-style overlay experiences.</li>
                       <li>Integrated DeepSeek-assisted bilingual memory-copy generation, polishing, and fallback-safe AI output flows.</li>
                       <li>Designed and implemented the evaluation instrumentation inside the product, including User Test Mode, route feedback capture, A/B preference logging, and admin-side usability evidence aggregation.</li>
+                      <li>Ran the 3-person Alpha usability test and summarised the n = 3 task results, average difficulty, user notes, and before/after refinement evidence.</li>
                       <li>Designed and implemented the A/B experiment framework for recommendation-entry alternatives, including guided-form versus quick-picks comparison and backend/admin evidence capture.</li>
                       <li>Built the full admin evidence and content-management workflow, including Admin Insights, usability-test export, route/service-point CRUD, and admin-facing summary dashboards.</li>
                       <li>Implemented the backend data persistence layer, including questionnaire submissions, usability tests, sessions, play profiles, and storage support for both persistent database use and fallback-safe local modes.</li>
@@ -3838,6 +3856,7 @@
                       <li>设计并实现基于相机的交互式记忆功能与 AR 风格叠层体验。</li>
                       <li>集成 DeepSeek 辅助的双语纪念卡文案生成、润色与具备回退机制的 AI 输出流程。</li>
                       <li>在产品内部设计并实现评估埋点体系，包括 User Test Mode、路线反馈采集、A/B 偏好记录与后台端可用性证据汇总。</li>
+                      <li>实际执行 3 人 Alpha 可用性测试，并汇总 n = 3 任务结果、平均难度、用户反馈和 before/after 迭代证据。</li>
                       <li>设计并实现推荐入口的 A/B 实验框架，包括 guided-form 与 quick-picks 的比较及其后端/后台证据采集。</li>
                       <li>构建完整的后台证据与内容管理工作流，包括 Admin Insights、可用性测试导出、路线/服务点 CRUD 与面向管理端的汇总仪表板。</li>
                       <li>实现后端数据持久化层，包括问卷提交、可用性测试、会话、个人资料，以及兼容持久数据库与本地回退模式的存储支持。</li>
@@ -3855,7 +3874,7 @@
                     </ul>
                   </div>
                 </td>
-                <td><span class="lang-en">End-to-end project ownership and primary implementation scope documented in the team record.</span><span class="lang-zh">团队记录中明确标注为端到端项目主导者与主要实现范围承担者。</span></td>
+                <td><span class="lang-en">End-to-end project leadership across research, core UX and system design, full-stack implementation, evaluation evidence, poster, and portfolio delivery.</span><span class="lang-zh">归纳为端到端项目主导：覆盖调研、核心 UX 与系统设计、全栈实现、评估证据、海报和作品集交付。</span></td>
               </tr>
               <tr>
                 <td>Haoyan Xu</td>
@@ -3886,8 +3905,8 @@
         <div class="section-head">
           <div>
             <h2>
-              <span class="lang-en">5. Early Evaluation &amp; Impact</span>
-              <span class="lang-zh">5. 早期评估与影响</span>
+              <span class="lang-en">6. Early Evaluation &amp; Impact</span>
+              <span class="lang-zh">6. 早期评估与影响</span>
             </h2>
             <p>
               <span class="lang-en">Summarises requirement evidence, alpha-stage signals, testing methods, and design implications.</span>
@@ -4195,8 +4214,8 @@
         <div class="section-head">
           <div>
             <h2>
-              <span class="lang-en">6. Final Reflection</span>
-              <span class="lang-zh">6. 最终反思</span>
+              <span class="lang-en">7. Final Reflection</span>
+              <span class="lang-zh">7. 最终反思</span>
             </h2>
             <p>
               <span class="lang-en">Outcome, limitations, future work, ethics, AI disclosure, and references.</span>
@@ -4312,6 +4331,10 @@
           <article class="panel">
             <span class="subhead"><span class="lang-en">Demo video narrative plan</span><span class="lang-zh">Demo 视频叙事计划</span></span>
             <h3><span class="lang-en">Show why, how, and what, not only a click sequence</span><span class="lang-zh">展示 why、how 与 what，而不只是操作顺序</span></h3>
+            <p>
+              <span class="lang-en">Final submitted video: <a href="https://video.xjtlu.edu.cn/Mediasite/Play/6e0dad5219fb4023aa3ad0420d9d30e21d" target="_blank" rel="noreferrer" style="color: var(--brand); font-weight: 700;">open Mediasite recording</a>.</span>
+              <span class="lang-zh">最终提交视频：<a href="https://video.xjtlu.edu.cn/Mediasite/Play/6e0dad5219fb4023aa3ad0420d9d30e21d" target="_blank" rel="noreferrer" style="color: var(--brand); font-weight: 700;">打开 Mediasite 录制</a>。</span>
+            </p>
             <ul>
               <li><span class="lang-en"><strong>Why:</strong> open with the onboarding problem: newcomers know the campus exists, but do not know which route, service, or first action is right for their situation.</span><span class="lang-zh"><strong>Why：</strong>先说明 onboarding 问题：新生知道校园空间存在，却不知道自己的情境下应该先走哪条路线、找哪个服务、做什么第一步。</span></li>
               <li><span class="lang-en"><strong>How:</strong> explain the poster-based R1-R5 to Design Goal to Feature mapping, then show how road-aligned guidance, important-place explanation, personalised route entry, campus resources, playful memory, consent, and evidence capture connect as one design logic.</span><span class="lang-zh"><strong>How：</strong>说明基于海报的 R1-R5 如何映射到 Design Goal 与 Feature，再展示道路对齐引导、重要地点解释、个性化路线入口、校园资源、趣味记忆、知情同意和证据采集如何构成同一套设计逻辑。</span></li>
@@ -4609,8 +4632,8 @@
         metaDescription.setAttribute(
           'content',
           lang === 'zh'
-            ? 'Campus Compass 的 CPT208 过程作品集，包含中英双语的项目动机、需求、构思、实现、评估与反思。'
-            : 'Campus Compass CPT208 process portfolio with bilingual English-Chinese content covering motivation, requirements, ideation, implementation, evaluation, and reflection.'
+            ? 'Campus Compass 的 CPT208 过程作品集，包含中英双语的项目动机、需求、构思、实现、贡献、评估与反思。'
+            : 'Campus Compass CPT208 process portfolio with bilingual English-Chinese content covering motivation, requirements, ideation, implementation, contribution, evaluation, and reflection.'
         );
       }
 
