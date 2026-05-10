@@ -4272,7 +4272,7 @@
             <span class="subhead"><span class="lang-en">AI disclosure</span><span class="lang-zh">AI 使用披露</span></span>
             <h3><span class="lang-en">How AI was used and evidenced</span><span class="lang-zh">AI 的使用方式与证据</span></h3>
             <ul>
-              <li><span class="lang-en"><strong>Prompt evidence:</strong> the main AI-assisted implementation directions are documented in the repository at <a href="../ai-logs/README.md" target="_blank" rel="noreferrer"><code>ai-logs/README.md</code></a> and <a href="../ai-logs/primary-prompts.md" target="_blank" rel="noreferrer"><code>ai-logs/primary-prompts.md</code></a>.</span><span class="lang-zh"><strong>Prompt 证据：</strong>主要 AI 辅助实现方向已记录在仓库中的 <a href="../ai-logs/README.md" target="_blank" rel="noreferrer"><code>ai-logs/README.md</code></a> 和 <a href="../ai-logs/primary-prompts.md" target="_blank" rel="noreferrer"><code>ai-logs/primary-prompts.md</code></a>。</span></li>
+              <li><span class="lang-en"><strong>Portfolio-polishing evidence:</strong> the AI assistance used to structure, polish, revise, and check this portfolio page is documented in <a href="./ai-logs/README.md" target="_blank" rel="noreferrer"><code>ai-logs/README.md</code></a> and <a href="./ai-logs/primary-prompts.md" target="_blank" rel="noreferrer"><code>ai-logs/primary-prompts.md</code></a>.</span><span class="lang-zh"><strong>Portfolio 润色证据：</strong>用于组织、润色、修改和检查本 portfolio 页面时的 AI 辅助过程已记录在 <a href="./ai-logs/README.md" target="_blank" rel="noreferrer"><code>ai-logs/README.md</code></a> 和 <a href="./ai-logs/primary-prompts.md" target="_blank" rel="noreferrer"><code>ai-logs/primary-prompts.md</code></a>。</span></li>
               <li><span class="lang-en"><strong>ChatGPT:</strong> used for ideation support, wording refinement, implementation planning, code review, and portfolio structure. It did not replace the group's user research, route verification, or final design judgement.</span><span class="lang-zh"><strong>ChatGPT：</strong>用于创意辅助、文案润色、实现规划、代码审查和作品集结构整理；没有替代团队的用户研究、路线核对或最终设计判断。</span></li>
               <li><span class="lang-en"><strong>DeepSeek:</strong> integrated into Campus Memory for AI-assisted bilingual postcard copy generation and refinement, with local fallback copy when the live AI service is unavailable.</span><span class="lang-zh"><strong>DeepSeek：</strong>集成到 Campus Memory 中，用于双语纪念卡文案生成与润色；当实时 AI 服务不可用时，系统会回退到本地内置文案。</span></li>
               <li><span class="lang-en"><strong>Dreamina AI:</strong> used only for supporting visual exploration and visual-asset ideation, with AI-generated visual use disclosed in the references.</span><span class="lang-zh"><strong>Dreamina AI：</strong>仅用于辅助视觉探索和视觉素材构思，并在参考文献中披露 AI 视觉素材使用。</span></li>
@@ -4284,39 +4284,37 @@
         <div class="layout-2" style="margin-top: 18px;">
           <article class="panel">
             <span class="subhead"><span class="lang-en">vibe coding process reflection</span><span class="lang-zh">vibe coding 过程反思</span></span>
-            <h3><span class="lang-en">Prompt evidence, implementation output, and verification</span><span class="lang-zh">Prompt 证据、实现产出与验证方式</span></h3>
+            <h3><span class="lang-en">Two specific AI-use examples using P/O/A</span><span class="lang-zh">两个具体 AI 使用案例：P/O/A</span></h3>
             <p>
-              <span class="lang-en">The cleaned prompt log does not store every chat message. Instead, it records the main directions that shaped implementation, so the portfolio can show how AI assistance was bounded and verified.</span>
-              <span class="lang-zh">整理后的 prompt 日志没有保存每一句对话，而是记录了影响实现的主要方向，便于在作品集中说明 AI 辅助的边界和验证方式。</span>
+              <span class="lang-en">The linked AI polishing notes explain how this portfolio page was structured, revised, and checked. The reflection below focuses on two concrete system-development moments where AI output had to be judged, modified, or constrained by our own evidence.</span>
+              <span class="lang-zh">链接中的 AI 润色说明解释了本 portfolio 页面如何被组织、修改和检查。下面的反思则聚焦两个具体的系统开发时刻：AI 输出需要被我们根据证据判断、修改或限制。</span>
+            </p>
+            <p>
+              <span class="lang-en">AI was used as a polishing, review, and diagnostic tool, not as the final decision-maker. We only adopted outputs that could be implemented, tested, and supported by our own campus research evidence.</span>
+              <span class="lang-zh">AI 在本项目中被用作润色、检查和诊断工具，而不是最终决策者。我们只采纳那些能够被实现、测试，并由我们自己的校园调研证据支持的输出。</span>
             </p>
             <div class="table-wrap" style="margin-top: 14px;">
-              <table aria-label="AI prompt evidence and verification / AI prompt 证据与验证">
+              <table aria-label="Specific AI use reflection using P O A / 使用 P O A 的具体 AI 使用反思">
                 <thead>
                   <tr>
-                    <th><span class="lang-en">Prompt cluster</span><span class="lang-zh">Prompt 类别</span></th>
-                    <th><span class="lang-en">What was asked</span><span class="lang-zh">主要请求内容</span></th>
-                    <th><span class="lang-en">What it influenced</span><span class="lang-zh">影响的实现</span></th>
-                    <th><span class="lang-en">How we verified it</span><span class="lang-zh">验证方式</span></th>
+                    <th><span class="lang-en">Example</span><span class="lang-zh">案例</span></th>
+                    <th><span class="lang-en">P - Prompt</span><span class="lang-zh">P - Prompt</span></th>
+                    <th><span class="lang-en">O - Outcome</span><span class="lang-zh">O - Outcome</span></th>
+                    <th><span class="lang-en">A - Action</span><span class="lang-zh">A - Action</span></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="lang-en">Product and feature direction</span><span class="lang-zh">产品与功能方向</span></td>
-                    <td><span class="lang-en">Transform the route browser into a playful campus exploration system; add Campus Memory; make routes executable step by step.</span><span class="lang-zh">将路线浏览器转化为趣味校园探索系统；加入 Campus Memory；让路线可以逐步执行。</span></td>
-                    <td><span class="lang-en">Route recommendation, route progress, completion feedback, badges, and Campus Memory postcard flow.</span><span class="lang-zh">路线推荐、路线进度、完成反馈、徽章系统和 Campus Memory 明信片流程。</span></td>
-                    <td><span class="lang-en">Checked against R1-R5, Crazy Eights alternatives, before/after refinement, and the n = 3 alpha-test task results.</span><span class="lang-zh">通过 R1-R5、Crazy Eights 备选方案、before/after 迭代和 n = 3 Alpha 任务测试结果进行核对。</span></td>
+                    <td><span class="lang-en">Campus Memory and AI copy</span><span class="lang-zh">Campus Memory 与 AI 文案</span></td>
+                    <td><span class="lang-en">"Help turn the route-ending page into a Campus Memory postcard flow. It should support building-themed templates, live camera capture, bilingual copy, and a fallback when the AI service is unavailable."</span><span class="lang-zh">“请把路线结束页改造成 Campus Memory 明信片流程，支持建筑主题模板、实时相机拍摄、双语文案，以及 AI 服务不可用时的 fallback。”</span></td>
+                    <td><span class="lang-en"><strong>Partly successful.</strong> AI gave a useful flow structure and helped plan the DeepSeek-assisted bilingual copy, but some proposed wording was too generic and assumed the live AI response would always be reliable.</span><span class="lang-zh"><strong>部分成功。</strong>AI 给出了有用的流程结构，并帮助规划 DeepSeek 辅助双语文案，但部分候选文案过于通用，也默认实时 AI 响应总是可靠。</span></td>
+                    <td><span class="lang-en">We modified the implementation to include local fallback copy, reviewed the generated tone manually, and kept the postcard text tied to the selected route/building rather than accepting generic "campus memory" wording.</span><span class="lang-zh">我们修改实现，加入本地 fallback 文案；人工检查生成语气；并要求明信片内容与所选路线/建筑绑定，而不是直接接受泛泛的“校园回忆”表达。</span></td>
                   </tr>
                   <tr>
-                    <td><span class="lang-en">Implementation priorities</span><span class="lang-zh">实现优先级</span></td>
-                    <td><span class="lang-en">Connect major buttons and transitions, bring map and route logic into the workspace, add camera capture, refactor components, and harden launch readiness.</span><span class="lang-zh">连接主要按钮和页面跳转，引入地图与路线逻辑，加入相机拍摄，整理组件结构，并加强上线准备。</span></td>
-                    <td><span class="lang-en">AMap handoff, camera capture, postcard export, component folders, system status checks, and fallback-safe behaviours.</span><span class="lang-zh">AMap 接力、相机拍摄、明信片导出、组件文件夹、系统状态检查和 fallback-safe 行为。</span></td>
-                    <td><span class="lang-en">Verified through manual route checks, README setup checks, health/status pages, and repo tests such as lint, build, smoke, and E2E journeys.</span><span class="lang-zh">通过人工路线核对、README 部署检查、健康/状态页面，以及仓库中的 lint、build、smoke 和 E2E 旅程测试进行验证。</span></td>
-                  </tr>
-                  <tr>
-                    <td><span class="lang-en">Coursework-focused improvements</span><span class="lang-zh">课程要求导向改进</span></td>
-                    <td><span class="lang-en">Add personalised questionnaire matching, step tracking, route completion, feedback capture, admin insights, and accessibility settings.</span><span class="lang-zh">加入个性化问卷匹配、步骤跟踪、路线完成、反馈采集、后台洞察和无障碍设置。</span></td>
-                    <td><span class="lang-en">Requirement-design-feature-evaluation alignment, User Test Mode, Admin Insights, accessibility controls, and evidence export flows.</span><span class="lang-zh">需求-设计-功能-评估对应表、User Test Mode、Admin Insights、无障碍控制和证据导出流程。</span></td>
-                    <td><span class="lang-en">Verified by mapping features to rubric requirements, checking anonymous tester records, and comparing the system against the portfolio's evaluation tasks.</span><span class="lang-zh">通过功能与 rubric 要求映射、匿名测试记录检查，以及系统与作品集中评估任务的对照进行验证。</span></td>
+                    <td><span class="lang-en">Route execution and launch readiness</span><span class="lang-zh">路线执行与上线准备</span></td>
+                    <td><span class="lang-en">"Review the prototype as a route-based onboarding system. Connect the main buttons and transitions, make routes executable step by step, integrate the map handoff, and suggest checks before launch."</span><span class="lang-zh">“请把原型作为路线型 onboarding 系统检查：连接主要按钮和页面跳转，让路线可以逐步执行，集成地图接力，并建议上线前检查项。”</span></td>
+                    <td><span class="lang-en"><strong>Successful with constraints.</strong> AI identified missing interaction links and useful readiness checks, but it also proposed broader route features that were too large for the available evidence and time.</span><span class="lang-zh"><strong>在限制下成功。</strong>AI 找出了缺失的交互连接和有用的上线检查项，但也提出了一些更大的路线功能，超出了现有证据和时间范围。</span></td>
+                    <td><span class="lang-en">We kept the practical parts: route progress, completion feedback, AMap handoff, status checks, and manual route verification. Larger unsupported ideas were discarded, and final claims were checked against R1-R5, route photos, alpha-test tasks, lint/build/smoke tests, and E2E journeys.</span><span class="lang-zh">我们保留了可落地部分：路线进度、完成反馈、AMap 接力、状态检查和人工路线核对。较大的无证据功能被舍弃，最终表述再用 R1-R5、路线照片、Alpha 测试任务、lint/build/smoke 测试和 E2E 旅程验证。</span></td>
                   </tr>
                 </tbody>
               </table>
@@ -4360,14 +4358,14 @@
             <ul>
               <li><span class="lang-en">Commercial products benchmarked: AMap, Google Maps, MazeMap, Apple Maps, Duolingo, and Nike Run Club. AMap, Google Maps, MazeMap, and Apple Maps informed route and wayfinding design, while Duolingo and Nike Run Club informed lightweight gamification, progress feedback, and motivation loops.</span>
                 <span class="lang-zh">商业产品对照：AMap、Google Maps、MazeMap、Apple Maps、Duolingo 和 Nike Run Club。其中 AMap、Google Maps、MazeMap 和 Apple Maps 用于参考路线与寻路设计，Duolingo 和 Nike Run Club 用于参考轻量游戏化、进度反馈和激励循环。</span></li>
-              <li><span class="lang-en">[AI-1] OpenAI, ChatGPT (GPT-5.3), accessed on 2026-04-10, available at <a href="https://chatgpt.com/" target="_blank" rel="noreferrer">https://chatgpt.com/</a>. Used for ideation support, wording refinement, code review, portfolio structuring, and implementation planning; main prompt directions are summarised in <a href="../ai-logs/primary-prompts.md" target="_blank" rel="noreferrer"><code>ai-logs/primary-prompts.md</code></a>.</span>
-                <span class="lang-zh">[AI-1] OpenAI, ChatGPT（GPT-5.3），访问日期 2026-04-10，可通过 <a href="https://chatgpt.com/" target="_blank" rel="noreferrer">https://chatgpt.com/</a> 访问。用于创意辅助、文案润色、代码审查、作品集结构整理和实现规划；主要 prompt 方向已汇总于 <a href="../ai-logs/primary-prompts.md" target="_blank" rel="noreferrer"><code>ai-logs/primary-prompts.md</code></a>。</span></li>
+              <li><span class="lang-en">[AI-1] OpenAI, ChatGPT (GPT-5.3), accessed on 2026-04-10, available at <a href="https://chatgpt.com/" target="_blank" rel="noreferrer">https://chatgpt.com/</a>. Used for ideation support, wording refinement, code review, implementation planning, and portfolio polishing/review; the portfolio-page AI polishing notes are summarised in <a href="./ai-logs/primary-prompts.md" target="_blank" rel="noreferrer"><code>ai-logs/primary-prompts.md</code></a>.</span>
+                <span class="lang-zh">[AI-1] OpenAI, ChatGPT（GPT-5.3），访问日期 2026-04-10，可通过 <a href="https://chatgpt.com/" target="_blank" rel="noreferrer">https://chatgpt.com/</a> 访问。用于创意辅助、文案润色、代码审查、实现规划，以及 portfolio 润色/检查；本 portfolio 页面的 AI 润色说明已汇总于 <a href="./ai-logs/primary-prompts.md" target="_blank" rel="noreferrer"><code>ai-logs/primary-prompts.md</code></a>。</span></li>
               <li><span class="lang-en">[AI-2] DeepSeek, DeepSeek Chat/API, accessed on 2026-04-17, available at <a href="https://www.deepseek.com/" target="_blank" rel="noreferrer">https://www.deepseek.com/</a>. Used for AI-assisted bilingual Campus Memory postcard copy generation and refinement inside the implemented system.</span>
                 <span class="lang-zh">[AI-2] DeepSeek, DeepSeek Chat/API，访问日期 2026-04-17，可通过 <a href="https://www.deepseek.com/" target="_blank" rel="noreferrer">https://www.deepseek.com/</a> 访问。用于已实现系统中的 Campus Memory 双语纪念卡文案生成与润色。</span></li>
               <li><span class="lang-en">[AI-3] Dreamina AI, accessed on 2026-04-10, available at <a href="https://dreamina.capcut.com/" target="_blank" rel="noreferrer">https://dreamina.capcut.com/</a>. Used for supporting visual exploration and visual-asset ideation.</span>
                 <span class="lang-zh">[AI-3] Dreamina AI，访问日期 2026-04-10，可通过 <a href="https://dreamina.capcut.com/" target="_blank" rel="noreferrer">https://dreamina.capcut.com/</a> 访问。用于辅助视觉探索和视觉素材构思。</span></li>
-              <li><span class="lang-en">High-fi evidence is grounded in the implemented codebase, repository AI logs, poster PDF, route-verification photos, and alpha-testing records.</span>
-                <span class="lang-zh">高保真证据主要来自已实现代码、仓库 AI 日志、海报 PDF、路线核对照片和 Alpha 测试记录。</span></li>
+              <li><span class="lang-en">High-fi evidence is grounded in the implemented codebase, poster PDF, route-verification photos, alpha-testing records, and the portfolio AI polishing notes included in this package.</span>
+                <span class="lang-zh">高保真证据主要来自已实现代码、海报 PDF、路线核对照片、Alpha 测试记录，以及本提交包内的 portfolio AI 润色说明。</span></li>
             </ul>
           </article>
         </div>
